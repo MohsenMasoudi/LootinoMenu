@@ -1,0 +1,154 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+
+    ext.versions = [
+            'minSdk'               : 17,
+            'compileSdk'           : 28,
+            'supportVer'           : '1.0.0',
+            'materialVer'          : '1.1.0-alpha01',
+            'constraint'           : '2.0.0-alpha2',
+            'buildTools'           : '28.0.3',
+            'androidPlugin'        : '3.5.0-alpha01',
+            'kotlin'               : '1.3.10',
+            'archComp'             : '2.0.0',
+            'room'                 : '2.1.0-alpha02',
+            'databinding'          : '3.2.0-alpha10',
+            'dagger'               : '2.17',
+            'flexbox'              : '1.1.0',
+            'retrofit'             : '2.4.0',
+            'retrofitRxAdapter'    : '1.0.0',
+            'okhttp'               : '3.12.0',
+            'okhttpDownloader'     : '1.1.0',
+            'rxJava'               : '2.1.7',
+            'rxAndroid'            : '2.0.1',
+            'stetho'               : '1.5.0',
+            'fresco'               : '1.11.0',
+            'calligraphy3'         : '3.0.0',
+            'viewpump'             : '1.0.0',
+            'jodaTime'             : "2.9.9",
+            'securePreferences'    : "0.1.4",
+            'multidex'             : '2.0.0',
+            'junit'                : '4.12',
+            'mockitoKotlin'        : '2.0.0-RC1',
+            'gms'                  : '4.1.0',
+            'firebaseCore'         : '16.0.4',
+            'firebaseMessaging'    : '17.3.3',
+            'playServiceLocation'  : '16.0.0',
+            'playServiceMap'       : '16.0.0',
+            'zxing'                : '3.3.3',
+            'rxpermission'         : '0.6.0',
+            'rxpermissionSnapshot' : '0.7.0-SNAPSHOT',
+            'sourceCompat'         : JavaVersion.VERSION_1_8,
+            'targetCompat'         : JavaVersion.VERSION_1_8
+    ]
+
+    ext.fields = [
+            'baseUrl'        : '"https://babanfood.com/api/"',
+            'baseUrlUnsafe'  : '"http://babanfood.com/api/"',
+            'uploadUrl'      : '"https://babanfood.com/media/"',
+            'uploadUrlUnsafe': '"http://babanfood.com/media/"',
+            'tokenPrefix'    : '"Bearer "',
+            'defaultToken'   : '"789df70cc8bd1899f8aca432021c65d2"',
+            'paymentToken'   : '"5846e8ab7d169f176b5d56d4ad7767c4"',
+            'authorization'  : '"Authorization"',
+            'sessionFileName': '"baban-food"',
+            'sessionPassword': '"ef6cb8ab9fbdbb37095c8bc8f1af8e83"',
+            'loginSessionKey': '"is.login"',
+            'tokenSessionKey': '"dynamic.token"',
+    ]
+
+    ext.deps = [
+            android   : [
+                    'gradlePlugin'   : "com.android.tools.build:gradle:${versions.androidPlugin}",
+                    'lifecycleExt'   : "androidx.lifecycle:lifecycle-extensions:${versions.archComp}",
+                    'lifecycleCommon': "androidx.lifecycle:lifecycle-common-java8:${versions.archComp}",
+                    'roomRuntime'    : "androidx.room:room-runtime:${versions.room}",
+                    'roomCompiler'   : "androidx.room:room-compiler:${versions.room}",
+                    'roomRx'         : "androidx.room:room-rxjava2:${versions.room}",
+                    'databinding'    : "com.android.databinding:compiler:${versions.databinding}",
+                    'multidex'       : "androidx.multidex:multidex:${versions.multidex}",
+            ],
+            support   : [
+                    'appCompat'             : "androidx.appcompat:appcompat:${versions.supportVer}",
+                    'recyclerView'          : "androidx.recyclerview:recyclerview:${versions.supportVer}",
+                    'cardView'              : "androidx.cardview:cardview:${versions.supportVer}",
+                    'support'               : "androidx.legacy:legacy-support-v4:${versions.supportVer}",
+                    'coreUi'                : "androidx.legacy:legacy-support-core-ui:${versions.supportVer}",
+                    'designSupport'         : "com.google.android.material:material:${versions.materialVer}",
+                    'constraintLayout'      : "androidx.constraintlayout:constraintlayout:${versions.constraint}",
+                    'constraintLayoutSolver': "androidx.constraintlayout:constraintlayout-solver:${versions.constraint}",
+            ],
+            kotlin    : [
+                    'gradlePlugin': "org.jetbrains.kotlin:kotlin-gradle-plugin:${versions.kotlin}",
+                    'stdlib'      : "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${versions.kotlin}",
+            ],
+            reactivex : [
+                    'rxJava'   : "io.reactivex.rxjava2:rxjava:${versions.rxJava}",
+                    'rxAndroid': "io.reactivex.rxjava2:rxandroid:${versions.rxAndroid}"
+            ],
+            google    : [
+                    'gmsPlugin'           : "com.google.gms:google-services:${versions.gms}",
+                    'dagger'              : "com.google.dagger:dagger:${versions.dagger}",
+                    'daggerAndroid'       : "com.google.dagger:dagger-android:${versions.dagger}",
+                    'daggerAndroidSupport': "com.google.dagger:dagger-android-support:${versions.dagger}",
+                    'daggerCompiler'      : "com.google.dagger:dagger-compiler:${versions.dagger}",
+                    'daggerProcessor'     : "com.google.dagger:dagger-android-processor:${versions.dagger}",
+                    'flexbox'             : "com.google.android:flexbox:${versions.flexbox}",
+                    'playServiceLocation' : "com.google.android.gms:play-services-location:${versions.playServiceLocation}",
+                    'playServiceMap'      : "com.google.android.gms:play-services-maps:${versions.playServiceMap}",
+                    'playServicePlaces'   : "com.google.android.gms:play-services-places:${versions.playServiceMap}",
+                    'firebaseCore'        : "com.google.firebase:firebase-core:${versions.firebaseCore}",
+                    'firebaseMessaging'   : "com.google.firebase:firebase-messaging:${versions.firebaseMessaging}",
+                    'zxing'               : "com.google.zxing:core:${versions.zxing}",
+            ],
+            square    : [
+                    'retrofit'             : "com.squareup.retrofit2:retrofit:${versions.retrofit}",
+                    'gsonConverter'        : "com.squareup.retrofit2:converter-gson:${versions.retrofit}",
+                    'okhttp'               : "com.squareup.okhttp3:okhttp:${versions.okhttp}",
+                    'okhttpDownloader'     : "com.jakewharton.picasso:picasso2-okhttp3-downloader:${versions.okhttpDownloader}",
+                    'retrofitRxAdapter'    : "com.jakewharton.retrofit:retrofit2-rxjava2-adapter:${versions.retrofitRxAdapter}",
+            ],
+            facebook  : [
+                    'stetho'            : "com.facebook.stetho:stetho:${versions.stetho}",
+                    'networkInterceptor': "com.facebook.stetho:stetho-okhttp3:${versions.stetho}",
+                    'fresco'            : "com.facebook.fresco:fresco:${versions.fresco}"
+            ],
+            inflationx: [
+                    'calligraphy3': "io.github.inflationx:calligraphy3:${versions.calligraphy3}",
+                    'viewpump'    : "io.github.inflationx:viewpump:${versions.viewpump}"
+            ],
+            additional: [
+                    'jodaTime'         : "joda-time:joda-time:${versions.jodaTime}",
+                    'securePreferences': "com.scottyab:secure-preferences-lib:${versions.securePreferences}",
+            ],
+            test      : [
+                    'junit'        : "junit:junit:${versions.junit}",
+                    'mockitoKotlin': "com.nhaarman.mockitokotlin2:mockito-kotlin:${versions.mockitoKotlin}",
+            ]
+    ]
+
+    repositories {
+        google()
+        jcenter()
+    }
+    dependencies {
+        classpath deps.android.gradlePlugin
+        classpath deps.google.gmsPlugin
+        classpath deps.kotlin.gradlePlugin
+
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        jcenter()
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}

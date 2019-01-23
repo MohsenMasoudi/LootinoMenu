@@ -1,0 +1,112 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    signingConfigs {
+        Atriatech {
+            keyAlias 'Atriatech'
+            keyPassword 'Ali399549'
+            storeFile file('/home/ali/Desktop/Allies/android.jks')
+            //Windows: D:/Projects/Android/Keys/android.jks
+            //Ubuntu: /home/ali/Desktop/Allies/android.jks
+            storePassword 'Ali22870'
+        }
+    }
+
+    compileSdkVersion versions.compileSdk
+    buildToolsVersion versions.buildTools
+
+    defaultConfig {
+        minSdkVersion versions.minSdk
+        targetSdkVersion versions.compileSdk
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            buildConfigField 'String', 'BASE_URL', fields.baseUrl
+            buildConfigField 'String', 'BASE_URL_UNSAFE', fields.baseUrlUnsafe
+            buildConfigField 'String', 'UPLOAD_URL', fields.uploadUrl
+            buildConfigField 'String', 'UPLOAD_URL_UNSAFE', fields.uploadUrlUnsafe
+            buildConfigField 'String', 'TOKEN_PREFIX', fields.tokenPrefix
+            buildConfigField 'String', 'DEFAULT_TOKEN', fields.defaultToken
+            buildConfigField 'String', 'PAYMENT_TOKEN', fields.paymentToken
+            buildConfigField 'String', 'AUTHORIZATION', fields.authorization
+            buildConfigField 'String', 'SESSION_FILE_NAME', fields.sessionFileName
+            buildConfigField 'String', 'SESSION_PASSWORD', fields.sessionPassword
+            buildConfigField 'String', 'LOGIN_SESSION_KEY', fields.loginSessionKey
+            buildConfigField 'String', 'TOKEN_SESSION_KEY', fields.tokenSessionKey
+        }
+        debug {
+            buildConfigField 'String', 'BASE_URL', fields.baseUrl
+            buildConfigField 'String', 'BASE_URL_UNSAFE', fields.baseUrlUnsafe
+            buildConfigField 'String', 'UPLOAD_URL', fields.uploadUrl
+            buildConfigField 'String', 'UPLOAD_URL_UNSAFE', fields.uploadUrlUnsafe
+            buildConfigField 'String', 'TOKEN_PREFIX', fields.tokenPrefix
+            buildConfigField 'String', 'DEFAULT_TOKEN', fields.defaultToken
+            buildConfigField 'String', 'PAYMENT_TOKEN', fields.paymentToken
+            buildConfigField 'String', 'AUTHORIZATION', fields.authorization
+            buildConfigField 'String', 'SESSION_FILE_NAME', fields.sessionFileName
+            buildConfigField 'String', 'SESSION_PASSWORD', fields.sessionPassword
+            buildConfigField 'String', 'LOGIN_SESSION_KEY', fields.loginSessionKey
+            buildConfigField 'String', 'TOKEN_SESSION_KEY', fields.tokenSessionKey
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility versions.sourceCompat
+        targetCompatibility versions.targetCompat
+    }
+}
+
+dependencies {
+    api fileTree(include: ['*.jar'], dir: 'libs')
+    api deps.support.appCompat
+    api deps.support.cardView
+    api deps.support.support
+    api deps.support.designSupport
+    api deps.support.constraintLayout
+    api deps.support.constraintLayoutSolver
+
+    api deps.android.lifecycleExt
+    api deps.android.lifecycleCommon
+    api deps.android.roomRuntime
+    api deps.android.roomRx
+    api deps.android.multidex
+
+    api deps.kotlin.stdlib
+
+    api deps.reactivex.rxJava
+    api deps.reactivex.rxAndroid
+
+    api deps.google.flexbox
+    api deps.google.dagger
+    api deps.google.playServiceLocation
+    api deps.google.playServiceMap
+    api deps.google.playServicePlaces
+//    api deps.google.firebaseCore
+//    api deps.google.firebaseMessaging
+//    api deps.google.daggerAndroid
+//    api deps.google.daggerAndroidSupport
+    kapt deps.google.daggerCompiler
+//	kapt deps.google.daggerProcessor
+
+    api deps.square.retrofit
+    api deps.square.gsonConverter
+    api deps.square.okhttp
+    api deps.square.retrofitRxAdapter
+    api deps.square.okhttpDownloader
+
+    api deps.facebook.stetho
+    api deps.facebook.networkInterceptor
+    api deps.facebook.fresco
+
+    api deps.inflationx.calligraphy3
+    api deps.inflationx.viewpump
+
+    api deps.additional.securePreferences
+}
