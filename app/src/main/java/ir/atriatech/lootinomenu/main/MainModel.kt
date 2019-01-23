@@ -1,20 +1,18 @@
 package ir.atriatech.lootinomenu.main
 
 import android.content.Context
-import android.content.SharedPreferences
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import ir.atriatech.lootinomenu.data_base.FoodDataBaseAccess
 import ir.atriatech.lootinomenu.data_base.room.AppDataBase
 import ir.atriatech.lootinomenu.model.Food
 import ir.atriatech.lootinomenu.model.SubMenu
-import javax.inject.Inject
 
 class MainModel constructor(val context: Context) : ViewModel(), MainContracter.Model {
     private lateinit var dataBase: AppDataBase
     private var firstTime: Boolean? = null
 
-    override fun getRoomdataBase(): AppDataBase {
+    override fun getRoomDataBase(): AppDataBase {
         dataBase = AppDataBase.getAppDataBase(context.applicationContext)!!
         return dataBase
     }
@@ -55,6 +53,6 @@ class MainModel constructor(val context: Context) : ViewModel(), MainContracter.
 
     init {
 //        component.inject(this)
-        getRoomdataBase()
+        getRoomDataBase()
     }
 }

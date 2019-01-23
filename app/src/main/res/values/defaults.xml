@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<!--Google Api-->
+	<string name="mapApiKey">AIzaSyAVf8QMdsWDEZ8ws2HcO17FnTRHJ8Zcx2Y</string>
+	<string name="mapStaticApiKey">AIzaSyA7Cd-3ZicsRZr--VR9vrHTNEMPHGs5ZH4</string>
+
+	<!--Behaviours-->
+	<string name="fabSimpleHideBehaviour">ir.atriatech.babanfood.base.ui.MyFabBehavior</string>
+
+	<!--Menu-->
+	<string name="menu0Title">خانه</string>
+	<string name="menu1Title">سبد خرید</string>
+	<string name="menu2Title">سفارش های من</string>
+	<string name="menu3Title">پروفایل من</string>
+	<string name="menu4Title">بیشتر</string>
+
+	<string-array name="introTitles">
+		<item>غذاتو سفارش بده</item>
+		<item>غذای خودتو بساز</item>
+		<item>آنلاین پرداخت کن</item>
+		<item>سفارشتو تحویل بگیر</item>
+		<item>به اشتراک بزار و اعتبار رایگان بگیر</item>
+	</string-array>
+
+	<string-array name="introDescriptions">
+		<item>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.</item>
+		<item>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.</item>
+		<item>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.</item>
+		<item>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.</item>
+		<item>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.</item>
+	</string-array>
+
+
+	<!--Fonts-->
+	<string name="IranSans">fonts/IranSans.ttf</string>
+	<string name="IranSansLight">fonts/IranSansLight.ttf</string>
+	<string name="IranSansBold">fonts/IranSansBold.ttf</string>
+
+	<!--Defaults-->
+	<string name="zero">0</string>
+	<string name="cashDefault">20,000 تومان</string>
+	<string name="tempShortAddress">فارس، شیراز، فرهنگ شهر بعد از استخر کوثر ساختمان ایساتیس طبقه ی ۴ واحد ۲۳</string>
+	<string name="_3DaysAgo">3 روز پیش</string>
+	<string name="shopName">فروشگاه آوا سرا</string>
+	<string name="callShop">تماس با فروشگاه</string>
+	<string name="connectionError">خطا در برقراری ارتباط با سرور</string>
+	<string name="noInternet">لطفا اتصال اینترنت خود را بررسی کنید</string>
+	<string name="offerDescription">توضیحات مربوط به تخفیف</string>
+	<string name="tempTime">از شنبه تا چهار شنبه از ساعت ۸ الی ۲۳ - پنجشنبه ساعت ۹ الی ۱۳</string>
+	<string name="tempPhone">09171234567</string>
+	<string name="creditCardName">%s (%s)</string>
+
+	<string-array name="supportStatus">
+		<item>پاسخ مدیر</item>
+		<item>پاسخ مشتری</item>
+		<item>منتظر پاسخ</item>
+		<item>بسته شده</item>
+	</string-array>
+</resources>

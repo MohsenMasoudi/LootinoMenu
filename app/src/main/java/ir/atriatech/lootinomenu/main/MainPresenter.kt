@@ -16,4 +16,5 @@ class MainPresenter(val model: MainModel, val view: MainView) : LifecycleObserve
     @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
     fun onDestroy() {
     }
+    
 }

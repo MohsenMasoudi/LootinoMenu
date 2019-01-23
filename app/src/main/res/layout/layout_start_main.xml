@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent">
+
+	<ImageView
+		android:id="@+id/img_coffee"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="400dp"
+		android:layout_marginEnd="8dp"
+		app:layout_constraintEnd_toStartOf="parent"
+		app:layout_constraintTop_toTopOf="parent"
+		app:srcCompat="@drawable/img_coffee"
+		tools:ignore="ContentDescription" />
+
+	<ImageView
+		android:id="@+id/img_restaurant"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="550dp"
+		app:layout_constraintEnd_toEndOf="@+id/img_coffee"
+		app:layout_constraintTop_toTopOf="parent"
+		app:srcCompat="@drawable/img_restaurant"
+		tools:ignore="ContentDescription" />
+
+	<com.google.android.material.button.MaterialButton
+		android:id="@+id/btn_coffee"
+		android:layout_width="150dp"
+		android:layout_height="50dp"
+		android:layout_marginTop="8dp"
+		android:layout_marginEnd="20dp"
+		app:backgroundTint="@color/sea_buckthorn"
+		app:cornerRadius="25dp"
+		app:layout_constraintBottom_toTopOf="@+id/guideline"
+		app:layout_constraintEnd_toEndOf="@+id/img_coffee"
+		app:layout_constraintTop_toTopOf="@+id/guideline"
+		app:rippleColor="@color/sea_buckthorn_ripple" />
+
+	<com.google.android.material.button.MaterialButton
+		android:id="@+id/btn_restaurant"
+		android:layout_width="150dp"
+		android:layout_height="50dp"
+		android:layout_marginTop="8dp"
+		android:layout_marginEnd="20dp"
+		app:backgroundTint="@color/flamingo"
+		app:cornerRadius="25dp"
+		app:layout_constraintBottom_toTopOf="@+id/guideline2"
+		app:layout_constraintEnd_toEndOf="@+id/img_restaurant"
+		app:layout_constraintTop_toTopOf="@+id/guideline2"
+		app:rippleColor="@color/flamingo_ripple" />
+
+	<androidx.constraintlayout.widget.Guideline
+		android:id="@+id/guideline"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:orientation="horizontal"
+		app:layout_constraintGuide_begin="491dp" />
+
+	<androidx.constraintlayout.widget.Guideline
+		android:id="@+id/guideline2"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:orientation="horizontal"
+		app:layout_constraintGuide_begin="635dp" />
+</androidx.constraintlayout.widget.ConstraintLayout>

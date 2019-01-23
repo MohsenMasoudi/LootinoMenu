@@ -1,19 +1,100 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".main.MainActivity">
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:background="@color/colorPrimary"
 
-    <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Hello World!"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+	>
+
+	<ImageView
+		android:id="@+id/img_logo"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="8dp"
+		android:layout_marginBottom="90dp"
+		app:layout_constraintBottom_toTopOf="@id/img_coffee"
+		app:layout_constraintLeft_toLeftOf="parent"
+		app:layout_constraintRight_toRightOf="parent"
+		app:layout_constraintTop_toTopOf="parent"
+		app:layout_constraintVertical_bias="0.25"
+		app:layout_constraintVertical_chainStyle="packed"
+		app:srcCompat="@drawable/img_logo"
+		tools:ignore="ContentDescription,MissingConstraints"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent" />
+
+	<ImageView
+		android:id="@+id/img_coffee"
+		android:layout_width="0dp"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="8dp"
+		android:layout_marginBottom="70dp"
+		android:scaleType="fitEnd"
+		app:layout_constraintBottom_toTopOf="@id/img_restaurant"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintHorizontal_bias="0.0"
+		app:layout_constraintLeft_toLeftOf="parent"
+		app:layout_constraintRight_toRightOf="parent"
+		app:layout_constraintTop_toBottomOf="@id/img_logo"
+
+		app:srcCompat="@drawable/img_coffee"
+		tools:ignore="ContentDescription"
+		app:layout_constraintStart_toStartOf="parent" />
+
+	<ImageView
+		android:id="@+id/img_restaurant"
+		android:layout_width="0dp"
+		android:layout_height="wrap_content"
+		android:scaleType="fitEnd"
+		app:layout_constraintBottom_toBottomOf="parent"
+		app:layout_constraintLeft_toLeftOf="parent"
+		app:layout_constraintRight_toRightOf="parent"
+		app:layout_constraintTop_toBottomOf="@id/img_coffee"
+		app:srcCompat="@drawable/img_restaurant"
+
+		tools:ignore="ContentDescription"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintEnd_toEndOf="parent" />
+
+	<com.google.android.material.button.MaterialButton
+		android:id="@+id/btn_coffee"
+		style="@style/ButtonOutline"
+		android:textSize="16sp"
+		android:layout_width="wrap_content"
+		android:layout_height="60dp"
+		android:layout_marginTop="8dp"
+		android:layout_marginEnd="20dp"
+		android:background="@color/colorPrimary"
+		android:text="@string/string_coffee_shop"
+		android:textColor="@color/sea_buckthorn"
+		app:cornerRadius="25dp"
+		app:layout_constraintBottom_toBottomOf="@+id/img_coffee"
+		app:layout_constraintEnd_toEndOf="@+id/img_coffee"
+		app:layout_constraintTop_toBottomOf="@+id/img_coffee"
+		app:rippleColor="@color/sea_buckthorn_ripple"
+		app:strokeColor="@color/sea_buckthorn"
+		app:strokeWidth="2dp"
+		/>
+
+	<com.google.android.material.button.MaterialButton
+		android:id="@+id/btn_restaurant"
+		style="@style/ButtonOutline"
+		android:textSize="16sp"
+		android:layout_width="wrap_content"
+		android:layout_height="60dp"
+		android:layout_marginTop="8dp"
+		android:layout_marginEnd="20dp"
+		android:background="@color/colorPrimary"
+		android:text="@string/string_restaurant"
+		android:textColor="@color/flamingo"
+		app:cornerRadius="25dp"
+		app:layout_constraintBottom_toBottomOf="@+id/img_restaurant"
+		app:layout_constraintEnd_toEndOf="@+id/img_restaurant"
+		app:layout_constraintTop_toBottomOf="@+id/img_restaurant"
+		app:rippleColor="@color/flamingo_ripple"
+		app:strokeColor="@color/flamingo"
+		app:strokeWidth="2dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

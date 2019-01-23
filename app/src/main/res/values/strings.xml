@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">LootinoMenu</string>
+	<string name="string_restaurant">سفارش از منو رستوران</string>
+	<string name="string_coffee_shop">سفارش از منو کافی شاپ</string>
+	<string name="setting">setting</string>
 </resources>
