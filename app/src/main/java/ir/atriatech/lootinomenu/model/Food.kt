@@ -19,6 +19,7 @@ class Food() {
     var subMenuId = 0
     var productName: String = ""
     var productDetail: String = ""
+    var foodOrder:Int=0
     var price: Int = 0
 
 }

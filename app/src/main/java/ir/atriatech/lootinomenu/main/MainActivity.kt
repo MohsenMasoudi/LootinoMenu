@@ -2,8 +2,10 @@ package ir.atriatech.lootinomenu.main
 
 import android.os.Bundle
 import android.view.Menu
+import android.view.MenuItem
 import com.example.beautyshopapplication.base.BaseActivity
 import ir.atriatech.lootinomenu.R
+import ir.atriatech.lootinomenu.login.LoginActivity
 
 
 class MainActivity : BaseActivity() {
@@ -25,4 +27,13 @@ class MainActivity : BaseActivity() {
         return super.onCreateOptionsMenu(menu)
     }
 
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        when(item?.itemId){
+            R.id.setting_item->{
+                val intent=LoginActivity.newIntent(this)
+                startActivity(intent)}
+        }
+        return super.onOptionsItemSelected(item)
+
+    }
 }

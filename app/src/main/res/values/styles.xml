@@ -1,25 +1,61 @@
-<resources>
-
-    <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.MaterialComponents.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
-
-    </style>
-    <style name="SplashTheme" parent="AppTheme">
-        <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
-        <item name="android:windowBackground">@drawable/img_splash</item>
-
-    </style>
-    <!--Button outline-->
-    <style name="ButtonOutline" parent="Widget.MaterialComponents.Button">
-        <item name="fontPath">@string/IranSansBold</item>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
 
-    </style>
+	<!-- Base application theme. -->
+	<style name="AppTheme" parent="Theme.MaterialComponents.Light.DarkActionBar">
+		<!-- Customize your theme here. -->
+		<item name="colorPrimary">@color/colorPrimary</item>
+		<item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+		<item name="colorAccent">@color/colorAccent</item>
+		<item name="android:layoutDirection">rtl</item>
+		<item name="android:textDirection">rtl</item>
+	</style>
+
+	<style name="AppThemeLtoR" parent="Theme.MaterialComponents.Light.NoActionBar">
+		<!-- Customize your theme here. -->
+		<item name="colorPrimary">@color/colorPrimary</item>
+		<item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+		<item name="colorAccent">@color/colorAccent</item>
+
+	</style>
+
+	<style name="SplashTheme" parent="AppTheme">
+		<!-- Customize your theme here. -->
+		<item name="colorPrimary">@color/colorPrimary</item>
+		<item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+		<item name="colorAccent">@color/colorAccent</item>
+		<item name="android:windowBackground">@drawable/img_splash</item>
+
+	</style>
+	<!--Button outline-->
+	<style name="ButtonOutline" parent="Widget.MaterialComponents.Button">
+		<item name="fontPath">@string/IranSans</item>
+	</style>
+	<style name="ButtonEmpty" parent="Widget.MaterialComponents.Button.TextButton">
+		<item name="fontPath">@string/IranSansBold</item>
+	</style>
+	<style name="TestDefault" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
+		<item name="fontPath">@string/IranSansBold</item>
+		<item name="android:textColor">@color/white</item>
+		<item name="android:textSize">16sp</item>
+	</style>
+
+	<style name="editTextLogin" parent="AppTheme">
+		<item name="fontPath">@string/IranSans</item>
+		<item name="android:textColorHint">@color/white</item>
+		<item name="android:textColor">@color/white</item>
+		<item name="android:tint">@color/white</item>
+		<item name="colorAccent">@color/white</item>
+		<item name="colorControlNormal">@color/white</item>
+		<item name="colorControlActivated">@color/white</item>
+		<item name="colorControlHighlight">@color/white</item>
+		<item name="android:textSize">16sp</item>
+
+	</style>
+
+	<style name="AppTheme.FullScreen" parent="AppTheme">
+		<item name="android:windowLightStatusBar" tools:targetApi="23">false</item>
+		<item name="android:windowTranslucentStatus" tools:targetApi="19">true</item>
+	</style>
+
 </resources>

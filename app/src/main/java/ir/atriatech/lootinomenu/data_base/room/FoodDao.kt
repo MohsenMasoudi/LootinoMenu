@@ -8,23 +8,27 @@ import ir.atriatech.lootinomenu.model.Food
 
 @Dao
 interface FoodDao {
-    @Query("SELECT * FROM food")
-    fun getAll(): MutableList<Food>
+	@Query("SELECT * FROM food")
+	fun getAll(): MutableList<Food>
 
-    @Query("SELECT * FROM food where id LIKE :id")
-    fun findById(id:Int): Food
+	@Query("SELECT * FROM food where id LIKE :id")
+	fun findById(id: Int): Food
 
-    @Query("SELECT * FROM food where subMenuId LIKE :subId")
-    fun findBySubId(subId:Int): Food
+	@Query("SELECT * FROM food where subMenuId LIKE :subId ORDER BY foodOrder ASC ")
+	fun findBySubId(subId: Int): MutableList<Food>
 
-    @Query("SELECT COUNT(*) from food")
-    fun countFoods(): Int
+	@Query("SELECT COUNT(*) from food")
+	fun countFoods(): Int
 
-    @Insert
-    fun insertAll( foodList: List<Food>)
-    @Insert
-    fun insert( food: Food)
+//	@Query("SELECT COUNT(subMenuId) from food")
+//	fun countMenuSubItems(): Int
 
-    @Delete
-    fun delete(food: Food)
+	@Insert
+	fun insertAll(foodList: List<Food>)
+
+	@Insert
+	fun insert(food: Food)
+
+	@Delete
+	fun delete(food: Food)
 }

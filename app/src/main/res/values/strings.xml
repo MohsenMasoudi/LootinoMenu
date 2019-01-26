@@ -1,6 +1,16 @@
 <resources>
-    <string name="app_name">LootinoMenu</string>
+	<string name="app_name">LootinoMenu</string>
 	<string name="string_restaurant">سفارش از منو رستوران</string>
 	<string name="string_coffee_shop">سفارش از منو کافی شاپ</string>
 	<string name="setting">setting</string>
+	<string name="password">کلمه ی عبور</string>
+	<string name="login_name">نام کاربری</string>
+
+	<string name="enter_admin">ورود اعضا</string>
+	<string name="enter_string">ورود</string>
+	<string name="wrong_name_or_pass">نام کاربری یا پسورد اشتباه است</string>
+
+	<!-- TODO: Remove or change this placeholder text -->
+	<string name="hello_blank_fragment">Hello blank fragment</string>
+	<string name="management_panel_string">پنل مدیریت</string>
 </resources>
