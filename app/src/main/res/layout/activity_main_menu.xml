@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools">
+
+
+	<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+		xmlns:app="http://schemas.android.com/apk/res-auto"
+		android:id="@+id/view_base_login_activity"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:background="@color/main_menu_item_color"
+		tools:context=".login.LoginActivity">
+
+		<androidx.appcompat.widget.Toolbar
+			android:id="@+id/my_toolbar"
+			android:layout_width="match_parent"
+			android:layout_height="56dp"
+			android:background="?attr/colorPrimary"
+			android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+			app:contentInsetEnd="0dp"
+			app:contentInsetLeft="0dp"
+			app:contentInsetRight="0dp"
+			app:contentInsetStart="0dp"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toTopOf="parent"
+			app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+
+			<androidx.constraintlayout.widget.ConstraintLayout
+				android:layout_width="match_parent"
+				android:layout_height="match_parent">
+
+				<ImageButton
+					android:id="@+id/img_btn_back_btn"
+					style="@style/ButtonEmpty"
+					android:layout_width="50dp"
+					android:layout_height="match_parent"
+					android:focusable="true"
+					android:scaleType="center"
+					android:src="@drawable/ic_back"
+					app:layout_constraintBottom_toBottomOf="parent"
+					app:layout_constraintRight_toRightOf="parent"
+					app:layout_constraintTop_toTopOf="parent"
+					tools:ignore="ContentDescription" />
+
+				<TextView
+					style="@style/IranSansBold"
+					android:layout_width="wrap_content"
+					android:layout_height="match_parent"
+					android:drawablePadding="10dp"
+					android:gravity="center"
+					android:padding="5dp"
+					android:text="@string/menu"
+					android:textColor="@color/white"
+					android:textSize="16sp"
+					app:layout_constraintBottom_toBottomOf="parent"
+					app:layout_constraintRight_toLeftOf="@id/img_btn_back_btn"
+					app:layout_constraintTop_toTopOf="parent" />
+			</androidx.constraintlayout.widget.ConstraintLayout>
+		</androidx.appcompat.widget.Toolbar>
+
+		<ir.atriatech.lootinomenu.base.ui.MyTabLayout
+			android:id="@+id/main_menu_tab_layout"
+			fontPath="@string/IranSansBold"
+			android:layout_width="match_parent"
+			android:layout_height="50dp"
+			android:background="?attr/colorPrimary"
+			app:layout_constraintLeft_toLeftOf="parent"
+			app:layout_constraintRight_toRightOf="parent"
+			app:layout_constraintTop_toBottomOf="@id/my_toolbar"
+			app:tabIndicatorColor="@color/apple"
+			app:tabMode="fixed"
+			app:tabRippleColor="@color/white"
+			app:tabTextColor="@color/white">
+
+		</ir.atriatech.lootinomenu.base.ui.MyTabLayout>
+
+		<com.duolingo.open.rtlviewpager.RtlViewPager
+			android:id="@+id/main_menu_activity_view_pager"
+			android:layout_width="match_parent"
+			android:layout_height="0dp"
+			app:layout_constraintBottom_toBottomOf="parent"
+			app:layout_constraintLeft_toLeftOf="parent"
+			app:layout_constraintRight_toRightOf="parent"
+			app:layout_constraintTop_toBottomOf="@id/main_menu_tab_layout">
+
+		</com.duolingo.open.rtlviewpager.RtlViewPager>
+	</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools">
+
+
+	<androidx.constraintlayout.widget.ConstraintLayout
+		android:id="@+id/view_base_login_activity"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:background="@color/main_menu_sub_menu_item_color"
+		tools:context=".login.LoginActivity">
+
+		<androidx.appcompat.widget.Toolbar
+			android:id="@+id/my_toolbar"
+			android:layout_width="match_parent"
+			android:layout_height="56dp"
+			android:background="?attr/colorPrimary"
+			android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+			app:contentInsetEnd="0dp"
+			app:contentInsetLeft="0dp"
+			app:contentInsetRight="0dp"
+			app:contentInsetStart="0dp"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toTopOf="parent"
+			app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+
+			<androidx.constraintlayout.widget.ConstraintLayout
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:padding="16dp">
+
+				<ImageButton
+					android:id="@+id/img_btn_back_btn"
+					style="@style/ButtonEmpty"
+					android:layout_width="50dp"
+					android:layout_height="match_parent"
+					android:focusable="true"
+					android:scaleType="center"
+					android:src="@drawable/ic_close"
+					app:layout_constraintBottom_toBottomOf="parent"
+					app:layout_constraintRight_toRightOf="parent"
+					app:layout_constraintTop_toTopOf="parent"
+					tools:ignore="ContentDescription" />
+
+				<TextView
+					style="@style/IranSansBold"
+					android:layout_width="wrap_content"
+					android:layout_height="match_parent"
+					android:drawablePadding="10dp"
+					android:gravity="center"
+					android:text=""
+					android:textColor="@color/white"
+					android:textSize="16sp"
+					app:layout_constraintBottom_toBottomOf="parent"
+					app:layout_constraintRight_toLeftOf="@id/img_btn_back_btn"
+					app:layout_constraintTop_toTopOf="parent" />
+			</androidx.constraintlayout.widget.ConstraintLayout>
+		</androidx.appcompat.widget.Toolbar>
+
+		<com.google.android.material.button.MaterialButton
+			android:id="@+id/btn_back_to_main_menu"
+			style="@style/ButtonEmpty"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_margin="16dp"
+			android:text="@string/back_to_menu"
+			android:textColor="@color/white"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toBottomOf="@id/imageView2"
+			app:strokeColor="@color/white"
+			app:strokeWidth="2dp" />
+
+		<TextView
+			android:id="@+id/txt_name"
+			style="@style/IranSans"
+			android:layout_width="0dp"
+			android:layout_height="wrap_content"
+			android:layout_margin="16dp"
+			android:text="@string/defaul_name"
+			android:textColor="@color/white"
+			android:textSize="24sp"
+			app:layout_constraintBaseline_toBaselineOf="@+id/txt_price"
+			app:layout_constraintLeft_toRightOf="@id/txt_price"
+			app:layout_constraintRight_toRightOf="parent" />
+
+		<TextView
+			android:id="@+id/txt_price"
+			style="@style/IranSansLight"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_margin="16dp"
+			android:text="@string/default_price"
+			android:textColor="@color/apple"
+			android:textSize="20sp"
+			app:layout_constraintLeft_toLeftOf="parent"
+			app:layout_constraintTop_toBottomOf="@id/my_toolbar" />
+
+		<TextView
+			android:id="@+id/txt_detail"
+			android:layout_width="match_parent"
+			android:layout_height="50dp"
+			android:layout_margin="16dp"
+			android:gravity="center_vertical"
+			android:text="@string/defualt_detail"
+			android:textColor="@color/white"
+			app:layout_constraintLeft_toLeftOf="parent"
+			app:layout_constraintRight_toRightOf="parent"
+			app:layout_constraintTop_toBottomOf="@id/txt_name" />
+
+		<ImageView
+			android:id="@+id/imageView2"
+			android:layout_width="match_parent"
+			android:layout_height="300dp"
+			android:layout_margin="16dp"
+			android:contentDescription="@string/todo"
+			android:src="@drawable/default_image"
+			app:layout_constraintBottom_toTopOf="@id/btn_back_to_main_menu"
+			app:layout_constraintLeft_toLeftOf="parent"
+			app:layout_constraintRight_toRightOf="parent"
+			app:layout_constraintTop_toBottomOf="@id/txt_detail" />
+
+
+	</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

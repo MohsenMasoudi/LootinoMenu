@@ -14,7 +14,7 @@ interface MainContracter {
 		fun getAllInnerDbFoods(): MutableList<Food>
 		fun getAllInnerDbSubMenu(): MutableList<SubMenu>
 		fun isThisFirstTimeToRunApp(): Boolean
-		fun getRoomDataBase(): AppDataBase
+//		fun getRoomDataBase(): AppDataBase
 
 	}
 

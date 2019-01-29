@@ -1,8 +1,8 @@
 package ir.atriatech.lootinomenu.model
 
 import androidx.room.Entity
-import androidx.room.ForeignKey
 import androidx.room.PrimaryKey
+import ir.atriatech.lootinomenu.test.stickyheader.Section
 
 //foreignKeys = arrayOf(
 //ForeignKey(
@@ -12,14 +12,16 @@ import androidx.room.PrimaryKey
 //onDelete = ForeignKey.SET_DEFAULT
 
 @Entity(tableName = "food")
-class Food() {
-    @PrimaryKey(autoGenerate = true)
-    var id: Int = 0
-    var menuId: Int = 0
-    var subMenuId = 0
-    var productName: String = ""
-    var productDetail: String = ""
-    var foodOrder:Int=0
-    var price: Int = 0
+class Food {
+
+
+	@PrimaryKey(autoGenerate = true)
+	var id: Int = 0
+	var menuId: Int = 0
+	var subMenuId = 0
+	var productName: String = ""
+	var productDetail: String = ""
+	var foodOrder: Long = 0
+	var price: Int = 0
 
 }

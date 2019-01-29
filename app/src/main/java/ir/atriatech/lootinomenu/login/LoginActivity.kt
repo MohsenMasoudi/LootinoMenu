@@ -1,15 +1,14 @@
 package ir.atriatech.lootinomenu.login
 
-import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import com.example.beautyshopapplication.base.BaseActivity
-import ir.atriatech.ADMIN_NAME
-import ir.atriatech.ADMIN_PASS
+import ir.atriatech.lootinomenu.ADMIN_NAME
+import ir.atriatech.lootinomenu.ADMIN_PASS
 import ir.atriatech.lootinomenu.R
-import ir.atriatech.management.ManagementActivity
+import ir.atriatech.lootinomenu.management.ManagementActivity
 import kotlinx.android.synthetic.main.activity_login.*
 
 class LoginActivity : BaseActivity() {

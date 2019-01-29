@@ -1,9 +1,6 @@
 package ir.atriatech.lootinomenu.data_base.room
 
-import androidx.room.Dao
-import androidx.room.Delete
-import androidx.room.Insert
-import androidx.room.Query
+import androidx.room.*
 import ir.atriatech.lootinomenu.model.Food
 
 @Dao
@@ -20,8 +17,13 @@ interface FoodDao {
 	@Query("SELECT COUNT(*) from food")
 	fun countFoods(): Int
 
-//	@Query("SELECT COUNT(subMenuId) from food")
+	@Query("SELECT COUNT(*) from food where subMenuId LIKE :subId")
+	fun countFoodsOfSubMenu(subId: Int): Int
+
+	//	@Query("SELECT COUNT(subMenuId) from food")
 //	fun countMenuSubItems(): Int
+	@Update
+	fun updateAll(foodList: MutableList<Food>)
 
 	@Insert
 	fun insertAll(foodList: List<Food>)

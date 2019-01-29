@@ -1,4 +1,4 @@
-package ir.atriatech.management
+package ir.atriatech.lootinomenu.main_menu
 
 
 import android.os.Bundle
@@ -10,15 +10,14 @@ import android.view.ViewGroup
 import ir.atriatech.lootinomenu.R
 
 
-
-class ManagementPanelFragment : Fragment() {
+class MainMenuFragment : Fragment() {
 
 	override fun onCreateView(
 		inflater: LayoutInflater, container: ViewGroup?,
 		savedInstanceState: Bundle?
 	): View? {
 		// Inflate the layout for this fragment
-		return inflater.inflate(R.layout.fragment_management_panel, container, false)
+		return inflater.inflate(R.layout.fragment_main_menu, container, false)
 	}
 
 

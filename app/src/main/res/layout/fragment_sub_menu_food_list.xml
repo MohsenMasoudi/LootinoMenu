@@ -1,0 +1,144 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools">
+
+	<data>
+
+		<variable
+			name="menuName"
+			type="String" />
+	</data>
+
+	<androidx.constraintlayout.widget.ConstraintLayout
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		tools:context=".management.sub_menu.SubMenuFragment"
+		android:background="@color/back_ground"
+		>
+
+		<androidx.appcompat.widget.Toolbar
+			android:id="@+id/my_toolbar"
+			android:layout_width="match_parent"
+			android:layout_height="56dp"
+			android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+			app:contentInsetEnd="0dp"
+			app:contentInsetLeft="0dp"
+			app:contentInsetRight="0dp"
+			app:contentInsetStart="0dp"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toTopOf="parent"
+			app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+
+			<androidx.constraintlayout.widget.ConstraintLayout
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:background="@color/back_ground_toolbar">
+
+				<ImageButton
+					android:id="@+id/img_btn_add_new_sub_menu"
+					style="@style/ButtonEmpty"
+					android:layout_width="50dp"
+					android:layout_height="match_parent"
+					android:focusable="true"
+					android:scaleType="centerInside"
+					android:src="@drawable/ic_add"
+					app:layout_constraintLeft_toLeftOf="parent"
+					app:layout_constraintTop_toTopOf="parent"
+					tools:ignore="ContentDescription" />
+
+				<ImageButton
+					android:id="@+id/img_btn_back_sub_menu_food_list"
+					style="@style/ButtonEmpty"
+					android:layout_width="50dp"
+					android:layout_height="match_parent"
+					android:focusable="true"
+					android:scaleType="centerInside"
+					android:src="@drawable/ic_back"
+					app:layout_constraintRight_toRightOf="parent"
+					app:layout_constraintTop_toTopOf="parent"
+					tools:ignore="ContentDescription" />
+
+				<TextView
+					android:id="@+id/txt_toolbar_title"
+					style="@style/IranSansBold"
+					android:layout_width="0dp"
+					android:layout_height="match_parent"
+					android:layout_marginStart="16dp"
+					android:layout_marginEnd="16dp"
+					android:drawablePadding="10dp"
+					android:gravity="center_vertical"
+					android:padding="5dp"
+					android:text="@{menuName}"
+					android:textColor="@color/white"
+					android:textSize="16sp"
+					app:layout_constraintBottom_toBottomOf="parent"
+					app:layout_constraintRight_toLeftOf="@id/img_btn_back_sub_menu_food_list"
+					app:layout_constraintTop_toTopOf="parent" />
+			</androidx.constraintlayout.widget.ConstraintLayout>
+		</androidx.appcompat.widget.Toolbar>
+
+		<androidx.recyclerview.widget.RecyclerView
+			android:id="@+id/recycler_view_food_list_for_sub_menu_fragment"
+			android:layout_width="match_parent"
+			android:layout_height="0dp"
+			app:layout_constraintBottom_toBottomOf="parent"
+			app:layout_constraintLeft_toLeftOf="parent"
+			app:layout_constraintRight_toRightOf="parent"
+			app:layout_constraintTop_toBottomOf="@id/my_toolbar" />
+
+		<androidx.constraintlayout.widget.ConstraintLayout
+			android:id="@+id/empty_layout"
+			android:layout_width="match_parent"
+			android:layout_height="0dp"
+			app:layout_constraintBottom_toBottomOf="parent"
+			app:layout_constraintLeft_toLeftOf="parent"
+			app:layout_constraintRight_toRightOf="parent"
+			app:layout_constraintTop_toBottomOf="@id/my_toolbar">
+
+			<ImageView
+				android:id="@+id/img_btn_nothing_found"
+				android:layout_width="150dp"
+				android:layout_height="150dp"
+				app:layout_constraintBottom_toBottomOf="parent"
+				app:layout_constraintLeft_toLeftOf="parent"
+				app:layout_constraintRight_toRightOf="parent"
+				app:layout_constraintTop_toTopOf="parent"
+				app:layout_constraintVertical_bias="0.29000002"
+				app:srcCompat="@drawable/ic_empty" />
+
+			<TextView
+				android:id="@+id/txt_nothing_found"
+				style="@style/IranSansBold"
+				android:layout_width="match_parent"
+				android:layout_height="50dp"
+				android:layout_margin="16dp"
+				android:textSize="20sp"
+				android:gravity="center"
+				android:text="@string/defualt_detail"
+				android:textColor="@color/white"
+				app:layout_constraintLeft_toLeftOf="parent"
+				app:layout_constraintRight_toRightOf="parent"
+				app:layout_constraintTop_toBottomOf="@id/img_btn_nothing_found" />
+
+
+			<com.google.android.material.button.MaterialButton
+				android:id="@+id/btn_back_to_main_menu"
+				android:layout_width="wrap_content"
+				android:layout_height="60dp"
+				android:layout_margin="16dp"
+				android:textSize="18sp"
+				android:drawableEnd="@drawable/ic_add"
+				app:icon="@drawable/ic_add"
+				android:text="افزودن محصول"
+				android:textColor="@color/white"
+				app:layout_constraintEnd_toEndOf="@+id/img_btn_nothing_found"
+				app:layout_constraintStart_toStartOf="@+id/img_btn_nothing_found"
+				app:layout_constraintTop_toBottomOf="@id/txt_nothing_found"
+				app:strokeColor="@color/white"
+				app:strokeWidth="2dp" />
+
+		</androidx.constraintlayout.widget.ConstraintLayout>
+
+	</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

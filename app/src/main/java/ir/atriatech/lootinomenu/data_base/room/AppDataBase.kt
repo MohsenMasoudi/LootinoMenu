@@ -11,20 +11,20 @@ abstract class AppDataBase : RoomDatabase() {
     abstract fun foodDao():FoodDao
     abstract fun subMenuDao():SubMenuDao
 
-    companion object {
-        var INSTANCE: AppDataBase? = null
-
-        fun getAppDataBase(context: Context): AppDataBase? {
-            if (INSTANCE == null){
-                synchronized(AppDataBase::class){
-                    INSTANCE = databaseBuilder(context.applicationContext, AppDataBase::class.java, "myDB").allowMainThreadQueries().build()
-                }
-            }
-            return INSTANCE
-        }
-
-        fun destroyDataBase(){
-            INSTANCE = null
-        }
-    }
+//    companion object {
+//        var INSTANCE: AppDataBase? = null
+//
+//        fun getAppDataBase(context: Context): AppDataBase? {
+//            if (INSTANCE == null){
+//                synchronized(AppDataBase::class){
+//                    INSTANCE = databaseBuilder(context.applicationContext, AppDataBase::class.java, "myDB").allowMainThreadQueries().build()
+//                }
+//            }
+//            return INSTANCE
+//        }
+//
+//        fun destroyDataBase(){
+//            INSTANCE = null
+//        }
+//    }
 }

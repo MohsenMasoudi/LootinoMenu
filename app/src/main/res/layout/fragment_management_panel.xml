@@ -1,14 +1,14 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
 	xmlns:tools="http://schemas.android.com/tools"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
-	xmlns:app="http://schemas.android.com/apk/res-auto"
-	tools:context="ir.atriatech.management.ManagementPanelFragment">
+	tools:context=".management.management_panel.ManagementPanelFragment">
+
 	<androidx.appcompat.widget.Toolbar
 		android:id="@+id/my_toolbar"
 		android:layout_width="match_parent"
 		android:layout_height="56dp"
-		android:background="?attr/colorPrimary"
 		android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
 		app:contentInsetEnd="0dp"
 		app:contentInsetLeft="0dp"
@@ -21,7 +21,8 @@
 
 		<androidx.constraintlayout.widget.ConstraintLayout
 			android:layout_width="match_parent"
-			android:layout_height="match_parent">
+			android:layout_height="match_parent"
+			android:background="@color/back_ground_toolbar">
 
 			<ImageButton
 				android:id="@+id/img_btn_back_btn"
@@ -29,26 +30,40 @@
 				android:layout_width="50dp"
 				android:layout_height="match_parent"
 				android:focusable="true"
-				android:scaleType="center"
+				android:scaleType="centerInside"
 				android:src="@drawable/ic_power_settings_new_white_24dp"
 				app:layout_constraintLeft_toLeftOf="parent"
 				app:layout_constraintTop_toTopOf="parent"
 				tools:ignore="ContentDescription" />
 
 			<TextView
-				style="@style/TestDefault"
-				android:layout_width="wrap_content"
+				style="@style/IranSansBold"
+				android:layout_width="0dp"
 				android:layout_height="match_parent"
+				android:layout_marginStart="16dp"
+				android:layout_marginEnd="16dp"
 				android:drawablePadding="10dp"
-				android:gravity="center"
+				android:gravity="center_vertical"
 				android:padding="5dp"
 				android:text="@string/management_panel_string"
 				android:textColor="@color/white"
 				android:textSize="16sp"
 				app:layout_constraintBottom_toBottomOf="parent"
+				app:layout_constraintLeft_toRightOf="@+id/img_btn_back_btn"
 				app:layout_constraintRight_toRightOf="parent"
 				app:layout_constraintTop_toTopOf="parent" />
 		</androidx.constraintlayout.widget.ConstraintLayout>
 	</androidx.appcompat.widget.Toolbar>
+
+	<androidx.recyclerview.widget.RecyclerView
+		android:id="@+id/recycler_view_fragment_management_panel"
+		android:layout_width="match_parent"
+		android:layout_height="0dp"
+		android:background="@color/back_ground"
+		app:layout_constraintBottom_toBottomOf="parent"
+		app:layout_constraintLeft_toLeftOf="parent"
+		app:layout_constraintRight_toRightOf="parent"
+		app:layout_constraintTop_toBottomOf="@id/my_toolbar" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

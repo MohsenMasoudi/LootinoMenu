@@ -13,14 +13,25 @@
 		android:supportsRtl="true"
 		android:theme="@style/AppTheme"
 		tools:ignore="GoogleAppIndexingWarning">
-		<activity android:name="ir.atriatech.management.ManagementActivity"></activity>
+		<activity android:name=".food_detail.FoodDetailActivity"
+			android:screenOrientation="portrait"
+			android:theme="@style/AppThemeNoActionBar"></activity>
+		<activity
+			android:name=".main_menu.MainMenuActivity"
+			android:screenOrientation="portrait"
+			android:theme="@style/AppThemeNoActionBar" />
+		<activity
+			android:name=".management.ManagementActivity"
+			android:screenOrientation="portrait"
+			android:theme="@style/AppThemeNoActionBar" />
 		<activity
 			android:name=".login.LoginActivity"
-			android:label=""
-			android:theme="@style/AppThemeLtoR" />
+			android:screenOrientation="portrait"
+			android:theme="@style/AppThemeNoActionBar" />
 		<activity
 			android:name=".main.MainActivity"
 			android:label="لوتینو"
+			android:screenOrientation="portrait"
 			android:theme="@style/SplashTheme">
 			<intent-filter>
 				<action android:name="android.intent.action.MAIN" />

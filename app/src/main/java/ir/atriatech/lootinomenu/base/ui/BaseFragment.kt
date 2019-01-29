@@ -2,6 +2,7 @@ package ir.atriatech.lootinomenu.base.ui
 
 import android.content.Context
 import androidx.fragment.app.Fragment
+import io.github.inflationx.viewpump.ViewPumpContextWrapper
 
 
 open class BaseFragment : Fragment() {

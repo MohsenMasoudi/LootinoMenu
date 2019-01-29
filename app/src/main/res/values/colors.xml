@@ -1,13 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#222222</color>
-    <color name="colorPrimaryDark">#000000</color>
-    <color name="colorAccent">#D81B60</color>
-<color name="sea_buckthorn">#f5a623</color>
-<color name="sea_buckthorn_ripple">#B2724905</color>
-    <color name="flamingo">#eb5914</color>
-    <color name="flamingo_ripple">#AE692606</color>
-    <color name="mine_shaft">#212121</color>
-    <color name="black">#000000</color>
-    <color name="white">#ffffff</color>
+	<color name="colorPrimary">#222222</color>
+	<color name="colorPrimaryDark">#000000</color>
+	<color name="colorAccent">#D81B60</color>
+	<color name="sea_buckthorn">#f5a623</color>
+	<color name="sea_buckthorn_ripple">#B2724905</color>
+	<color name="flamingo">#eb5914</color>
+	<color name="flamingo_ripple">#AE692606</color>
+	<color name="mine_shaft">#212121</color>
+	<color name="black">#000000</color>
+	<color name="white">#ffffff</color>
+	<color name="back_ground">#222222</color>
+	<color name="back_ground_item">#1d1d1d</color>
+	<color name="back_ground_toolbar">#1d1d1d</color>
+	<color name="apple">#5CA530</color>
+	<color name="main_menu_item_color">#979797</color>
+	<color name="main_menu_sub_menu_item_color">#3c3c3c</color>
+	<color name="main_menu_header_item_color">#515151</color>
 </resources>
