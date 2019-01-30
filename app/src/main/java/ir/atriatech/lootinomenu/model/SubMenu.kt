@@ -13,4 +13,6 @@ class SubMenu  {
 	var name: String = ""
 	var order: Long = 0
 	var menuId: Int = 0
+	var secondOrder:Long=0
+
 }

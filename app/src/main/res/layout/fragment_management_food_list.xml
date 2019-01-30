@@ -36,7 +36,7 @@
 				android:background="@color/back_ground_toolbar">
 
 				<ImageButton
-					android:id="@+id/img_btn_add_new_sub_menu"
+					android:id="@+id/img_btn_add_new_food"
 					style="@style/ButtonEmpty"
 					android:layout_width="50dp"
 					android:layout_height="match_parent"
@@ -123,7 +123,7 @@
 
 
 			<com.google.android.material.button.MaterialButton
-				android:id="@+id/btn_back_to_main_menu"
+				android:id="@+id/btn_add_new_to_empty"
 				android:layout_width="wrap_content"
 				android:layout_height="60dp"
 				android:layout_margin="16dp"

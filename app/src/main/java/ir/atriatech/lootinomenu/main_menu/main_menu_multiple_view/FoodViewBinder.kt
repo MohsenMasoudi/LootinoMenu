@@ -5,9 +5,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.squareup.picasso.Picasso
 import ir.atriatech.lootinomenu.R
 import ir.atriatech.lootinomenu.food_detail.FoodDetailActivity
 import ir.atriatech.lootinomenu.model.Food
+import kotlinx.android.synthetic.main.item_management_food_list.view.*
 import kotlinx.android.synthetic.main.main_menu_food_item.view.*
 import me.drakeet.multitype.ItemViewBinder
 
@@ -34,6 +36,8 @@ class FoodViewBinder : ItemViewBinder<Food, FoodViewBinder.ViewHolder>() {
 			itemView.setOnClickListener {
 				itemView.context.startActivity(FoodDetailActivity.newIntent(itemView.context,food.id))
 				 }
+			Picasso.get().load(food.picPath).placeholder(R.drawable.default_image).into(itemView.img_view_main_menu_food_item)
+
 		}
 
 	}

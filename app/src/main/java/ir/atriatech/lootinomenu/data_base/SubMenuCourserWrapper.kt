@@ -15,6 +15,7 @@ class SubMenuCourserWrapper(cursor: Cursor) : CursorWrapper(cursor) {
 		subMenu.subMenuId = id
 		subMenu.order = order
 		subMenu.menuId = menuId
+		subMenu.secondOrder=order
 		return subMenu
 
 	}

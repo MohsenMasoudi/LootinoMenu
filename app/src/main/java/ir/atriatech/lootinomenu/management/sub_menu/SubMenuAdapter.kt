@@ -15,12 +15,16 @@ import ir.atriatech.lootinomenu.data_base.room.AppDataBase
 import ir.atriatech.lootinomenu.management.ManagementActivity
 import ir.atriatech.lootinomenu.management.ManagementActivityCallBack
 import ir.atriatech.lootinomenu.management.add_or_edit_sub_menu.AddOrEditSubMenuFragment
+import ir.atriatech.lootinomenu.management.management_food_list.ManagementFoodListFragment
 import ir.atriatech.lootinomenu.management.management_panel.ManagementPanelAdapter
-import ir.atriatech.lootinomenu.management.sub_menu_food_list.SubMenuFoodListFragment
 import ir.atriatech.lootinomenu.model.Food
 import ir.atriatech.lootinomenu.model.SubMenu
 import kotlinx.android.synthetic.main.item_sub_menu_recycler_view.view.*
 import javax.inject.Inject
+import cn.pedant.SweetAlert.SweetAlertDialog
+
+
+
 
 
 class SubMenuAdapter : RecyclerView.Adapter<SubMenuAdapter.SubMenuViewHolder>()
@@ -32,6 +36,7 @@ class SubMenuAdapter : RecyclerView.Adapter<SubMenuAdapter.SubMenuViewHolder>()
 		return null
 	}
 
+	lateinit var listOfOrder: MutableList<Long>
 	protected val component by lazy { AppDH.baseComponent() }
 
 
@@ -65,23 +70,8 @@ class SubMenuAdapter : RecyclerView.Adapter<SubMenuAdapter.SubMenuViewHolder>()
 	}
 
 	override fun onMoveItem(fromPosition: Int, toPosition: Int) {
-
-
-//		val firstOrder= subMenuList[fromPosition].order
-////		Log.d("tag23",firstOrder.toString())
-//		val secondOrder= subMenuList[toPosition].order
-////		Log.d("tag23",secondOrder.toString())
-//
-//		subMenuList[fromPosition].order=secondOrder
-////		Log.d("tag23",subMenuList[fromPosition].name.toString())
-//
-//		subMenuList[toPosition].order=firstOrder
-//		Log.d("tag23",subMenuList[toPosition].name.toString())
 		val removed = subMenuList.removeAt(fromPosition)
 		subMenuList.add(toPosition, removed)
-//		Log.d("tag23",removed.order.toString())
-
-
 	}
 
 	override fun onCheckCanDrop(draggingPosition: Int, dropPosition: Int): Boolean {
@@ -89,15 +79,21 @@ class SubMenuAdapter : RecyclerView.Adapter<SubMenuAdapter.SubMenuViewHolder>()
 	}
 
 	override fun onItemDragFinished(fromPosition: Int, toPosition: Int, result: Boolean) {
+		var setOrder: Long = 1
+		for (i in subMenuList.indices) {
+			subMenuList[i].order = setOrder
+			setOrder++
 
-		appDataBase.subMenuDao().updateAll(subMenuList)
+		}
 		notifyDataSetChanged()
+		appDataBase.subMenuDao().updateAll(subMenuList)
+
 
 	}
 
 	override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {
 		super.onAttachedToRecyclerView(recyclerView)
-		notifyDataSetChanged()
+
 	}
 
 	var subMenuList: MutableList<SubMenu> = mutableListOf()
@@ -109,7 +105,7 @@ class SubMenuAdapter : RecyclerView.Adapter<SubMenuAdapter.SubMenuViewHolder>()
 	}
 
 	override fun getItemId(position: Int): Long {
-		return subMenuList.get(position).order
+		return subMenuList.get(position).secondOrder
 	}
 
 	override fun getItemCount(): Int {
@@ -126,7 +122,8 @@ class SubMenuAdapter : RecyclerView.Adapter<SubMenuAdapter.SubMenuViewHolder>()
 		fun bindUI(subMenu: SubMenu) {
 			val callback: ManagementPanelAdapter.CallBack = context as ManagementActivity
 			val managementActivityCallBack: ManagementActivityCallBack = context
-			itemView.txt_item_sub_menu.text = subMenu.name + subMenu.order
+			itemView.txt_item_sub_menu.text = subMenu.name
+//			itemView.txt_item_sub_menu.text = subMenu.name + subMenu.order
 			itemView.img_edit_item_sub_menu.setOnClickListener {
 
 				managementActivityCallBack.ManagmentFragmentLoader(
@@ -142,7 +139,8 @@ class SubMenuAdapter : RecyclerView.Adapter<SubMenuAdapter.SubMenuViewHolder>()
 					context.appDataBase.foodDao()
 						.findBySubId(subMenu.subMenuId)
 				for (i in listOfFood.indices) {
-					listOfFood[i].menuId = 0
+					listOfFood[i].subMenuId = 0
+
 				}
 				context.appDataBase.foodDao()
 					.updateAll(foodList = listOfFood)
@@ -152,14 +150,30 @@ class SubMenuAdapter : RecyclerView.Adapter<SubMenuAdapter.SubMenuViewHolder>()
 			}
 			itemView.img_add_food_to_sub_menu.setOnClickListener {
 				managementActivityCallBack.ManagmentFragmentLoader(
-					SubMenuFoodListFragment.newInstance(
+					ManagementFoodListFragment.newInstance(
 						subMenu.subMenuId
 					)
 				)
 			}
 
 		}
-
+//fun deletWarning(context: Context){
+//	SweetAlertDialog(context, SweetAlertDialog.WARNING_TYPE)
+//		.setTitleText("می خواهید این بخش را حذف کنید؟")
+//		.setCancelText("کنسل")
+//		.setConfirmText("بله")
+//		.showCancelButton(true)
+//		.setConfirmClickListener( SweetAlertDialog.OnSweetClickListener() {
+//
+////			public void onClick(SweetAlertDialog sDialog) {
+////				sDialog.dismissWithAnimation();
+////			}
+//			sweetAlertDialog ->
+//	})
+//		.setCancelClickListener {
+//				sDialog -> sDialog.cancel() }
+//		.show()
+//}
 	}
 
 	init {

@@ -34,10 +34,12 @@ androidExtensions {
 }
 
 dependencies {
+
     implementation project(':core')
     implementation project('::rtl-viewpager')
     implementation 'androidx.appcompat:appcompat:1.0.2'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+
     kapt deps.android.roomCompiler
     kapt deps.google.daggerCompiler
     /**
@@ -85,6 +87,32 @@ dependencies {
 //    implementation 'com.github.sadra:AwesomeSpinner:1.3.0'
     implementation 'com.jaredrummler:material-spinner:1.3.1'
 
+    /**
+     * crop image
+     */
+    api 'com.theartofdev.edmodo:android-image-cropper:2.8.0'
+
+/**
+ * image worker to save image into local storage
+ */
+
+    implementation 'com.github.1AboveAll:ImageWorker:0.6'
+/**
+ * permission
+ */
+    implementation 'pub.devrel:easypermissions:3.0.0'
+/**
+ * picasso
+ */
+    implementation 'com.squareup.picasso:picasso:2.71828'
+/**
+ * shape
+ */
+    implementation 'com.github.florent37:shapeofview:1.3.2'
+    /**
+     * alertDialog
+     */
+    implementation 'cn.pedant.sweetalert:library:1.3'
 
 
 }

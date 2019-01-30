@@ -69,7 +69,7 @@
 			android:textColor="@color/white"
 			app:layout_constraintEnd_toEndOf="parent"
 			app:layout_constraintStart_toStartOf="parent"
-			app:layout_constraintTop_toBottomOf="@id/imageView2"
+			app:layout_constraintTop_toBottomOf="@id/simple_shape_food_menu_item"
 			app:strokeColor="@color/white"
 			app:strokeWidth="2dp" />
 
@@ -110,17 +110,32 @@
 			app:layout_constraintRight_toRightOf="parent"
 			app:layout_constraintTop_toBottomOf="@id/txt_name" />
 
-		<ImageView
-			android:id="@+id/imageView2"
+		<com.github.florent37.shapeofview.shapes.RoundRectView
+			android:id="@+id/simple_shape_food_menu_item"
 			android:layout_width="match_parent"
 			android:layout_height="300dp"
 			android:layout_margin="16dp"
-			android:contentDescription="@string/todo"
-			android:src="@drawable/default_image"
+			app:elevation="4dp"
+			app:layout_constraintBottom_toBottomOf="parent"
+
 			app:layout_constraintBottom_toTopOf="@id/btn_back_to_main_menu"
 			app:layout_constraintLeft_toLeftOf="parent"
 			app:layout_constraintRight_toRightOf="parent"
-			app:layout_constraintTop_toBottomOf="@id/txt_detail" />
+			app:layout_constraintTop_toBottomOf="@id/txt_detail"
+			app:shape_roundRect_borderColor="@color/main_menu_sub_menu_item_color"
+			app:shape_roundRect_bottomLeftRadius="5dp"
+			app:shape_roundRect_bottomRightRadius="5dp"
+			app:shape_roundRect_topLeftRadius="5dp"
+			app:shape_roundRect_topRightRadius="5dp">
+
+			<ImageView
+				android:id="@+id/img_view_activity_food_detail"
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:scaleType="fitXY"
+				android:contentDescription="@string/todo"
+				android:src="@drawable/default_image" />
+		</com.github.florent37.shapeofview.shapes.RoundRectView>
 
 
 	</androidx.constraintlayout.widget.ConstraintLayout>

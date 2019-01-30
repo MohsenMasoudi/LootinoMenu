@@ -13,8 +13,8 @@
 	<!-- TODO: Remove or change this placeholder text -->
 	<string name="hello_blank_fragment">Hello blank fragment</string>
 	<string name="management_panel_string">پنل مدیریت</string>
-	<string name="coffee_shop_sub_menu_list">دسته بندی های محصولات کافی شاپ</string>
-	<string name="restaurant_sub_menu_list">دسته بندی های محصولات رستوران</string>
+	<string name="coffee_shop_sub_menu_list">محصولات کافی شاپ</string>
+	<string name="restaurant_sub_menu_list">محصولات رستوران</string>
 	<string name="test">sdc</string>
 	<string name="menu">منو</string>
 	<string name="back_to_menu">بازگشت به منو</string>
@@ -25,4 +25,6 @@
 	<string name="group_by">محصولات دسته بندی  </string>
 	<string name="nothing_found">محصولی یافت نشد</string>
 	<string name="price_of_product">قیمت محصول (تومان)</string>
+	<string name="product_name">نام محصول</string>
+	<string name="explain_for_product">توضیحات مربوط به محصول</string>
 </resources>

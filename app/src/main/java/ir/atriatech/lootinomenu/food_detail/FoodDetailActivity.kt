@@ -6,6 +6,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.beautyshopapplication.base.BaseActivity
+import com.squareup.picasso.Picasso
 import ir.atriatech.lootinomenu.EXTERA_FOOD_DETAIL_ACTIVITY
 import ir.atriatech.lootinomenu.R
 import ir.atriatech.lootinomenu.data_base.room.AppDataBase
@@ -14,6 +15,7 @@ import ir.atriatech.lootinomenu.main.MainActivity
 import ir.atriatech.lootinomenu.main_menu.MainMenuActivity
 import ir.atriatech.lootinomenu.model.Food
 import kotlinx.android.synthetic.main.activity_food_detail.*
+import kotlinx.android.synthetic.main.item_management_food_list.view.*
 import javax.inject.Inject
 
 class FoodDetailActivity : BaseActivity() {
@@ -58,6 +60,7 @@ class FoodDetailActivity : BaseActivity() {
 //			startActivity(launch)
 			this@FoodDetailActivity.finish()
 		}
+		Picasso.get().load(food.picPath).placeholder(R.drawable.default_image).into(img_view_activity_food_detail)
 
 	}
 //	interface CallBack{

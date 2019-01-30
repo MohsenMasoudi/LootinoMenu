@@ -1,8 +1,8 @@
 package ir.atriatech.lootinomenu.model
 
+import android.net.Uri
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import ir.atriatech.lootinomenu.test.stickyheader.Section
 
 //foreignKeys = arrayOf(
 //ForeignKey(
@@ -23,5 +23,6 @@ class Food {
 	var productDetail: String = ""
 	var foodOrder: Long = 0
 	var price: Int = 0
+	var picPath: Uri? = null
 
 }

@@ -25,12 +25,18 @@ interface FoodDao {
 	@Update
 	fun updateAll(foodList: MutableList<Food>)
 
+	@Update(onConflict = OnConflictStrategy.FAIL)
+	fun update(food: Food)
+
 	@Insert
 	fun insertAll(foodList: List<Food>)
 
-	@Insert
+	@Insert(onConflict = OnConflictStrategy.FAIL)
+
 	fun insert(food: Food)
 
 	@Delete
 	fun delete(food: Food)
+
+
 }

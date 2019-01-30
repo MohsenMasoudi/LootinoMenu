@@ -9,10 +9,11 @@ import androidx.fragment.app.Fragment
 import com.example.beautyshopapplication.base.BaseActivity
 import ir.atriatech.lootinomenu.R
 import ir.atriatech.lootinomenu.data_base.room.AppDataBase
+import ir.atriatech.lootinomenu.management.management_food_list.ManagementFoodListFragment
 import ir.atriatech.lootinomenu.management.management_panel.ManagementPanelAdapter
 import ir.atriatech.lootinomenu.management.management_panel.ManagementPanelFragment
 import ir.atriatech.lootinomenu.management.sub_menu.SubMenuFragment
-import ir.atriatech.lootinomenu.management.sub_menu_food_list.SubMenuFoodListFragment
+import pub.devrel.easypermissions.EasyPermissions
 import javax.inject.Inject
 
 class ManagementActivity : BaseActivity(), ManagementPanelAdapter.CallBack,
@@ -40,10 +41,10 @@ class ManagementActivity : BaseActivity(), ManagementPanelAdapter.CallBack,
 				loadFragment(SubMenuFragment.newInstance(2))
 			}
 			2 -> {
-//				loadFragment(
-//					SubMenuFoodListFragment.newInstance(
-//						0
-//					))
+				loadFragment(
+					ManagementFoodListFragment.newInstance(
+						0
+					))
 			}
 
 		}
@@ -76,6 +77,7 @@ class ManagementActivity : BaseActivity(), ManagementPanelAdapter.CallBack,
 	override fun onBackPressed() {
 		super.onBackPressed()
 	}
+
 }
 
 interface ManagementActivityCallBack {

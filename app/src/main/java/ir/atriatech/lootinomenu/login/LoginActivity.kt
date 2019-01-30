@@ -38,6 +38,9 @@ class LoginActivity : BaseActivity() {
 			}
 
 		}
+		img_btn_back_btn.setOnClickListener {
+			finish()
+		}
 	}
 
 

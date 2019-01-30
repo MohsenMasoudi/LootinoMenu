@@ -1,5 +1,6 @@
 package ir.atriatech.lootinomenu.main
 
+import android.Manifest
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
@@ -12,9 +13,26 @@ import ir.atriatech.lootinomenu.food_detail.FoodDetailActivity
 import ir.atriatech.lootinomenu.login.LoginActivity
 import ir.atriatech.lootinomenu.main_menu.MainMenuActivity
 import kotlinx.android.synthetic.main.activity_main.*
+import pub.devrel.easypermissions.EasyPermissions
 
 
-class MainActivity : BaseActivity() {
+class MainActivity : BaseActivity(), EasyPermissions.PermissionCallbacks {
+    override fun onPermissionsDenied(requestCode: Int, perms: MutableList<String>) {
+        finish()
+    }
+
+    override fun onPermissionsGranted(requestCode: Int, perms: MutableList<String>) {
+    }
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+
+        // Forward results to EasyPermissions
+        EasyPermissions.onRequestPermissionsResult(requestCode, permissions, grantResults, this)
+    }
     private lateinit var model: MainModel
     private lateinit var view: MainView
     companion object {
@@ -36,7 +54,12 @@ class MainActivity : BaseActivity() {
         btn_restaurant.setOnClickListener {
             startActivity(MainMenuActivity.newIntent(this,1))
         }
-
+        EasyPermissions.requestPermissions(
+            this,
+            "این برنامه نیاز به دسترسی به دوربین و دیتای گوشی دارد",
+            250,
+            Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE
+        )
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
