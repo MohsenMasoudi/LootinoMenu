@@ -2,8 +2,8 @@ package ir.atriatech.lootinomenu
 
 const val DATA_BASE_VERSION = 1
 const val DATA_BASE_NAME = "food.db"
-const val ADMIN_NAME = ""
-const val ADMIN_PASS = ""
+const val ADMIN_NAME = "lotino2018"
+const val ADMIN_PASS = "12345"
 val MANAGEMENT_PANEL_LIST: List<String> =
 	listOf("ویرایش محصولات کافی شاپ", "ویرایش محصولات رستوران", "دسته بندی نشده")
 const val ARG_SUB_MENU_FRAGMENT = "arg_sub_menu_fragment"
