@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import es.dmoral.toasty.Toasty
 import ir.atriatech.lootinomenu.ARG_MENU_ID_ADD_OR_EDIT_SUB_MENU_FRAGMENT
 import ir.atriatech.lootinomenu.ARG_SUB_MENU_ID_ADD_OR_EDIT_SUB_MENU_FRAGMENT
 import ir.atriatech.lootinomenu.R
@@ -20,6 +21,8 @@ import kotlinx.android.synthetic.main.fragment_add_or_edit_sub_menu.*
 class AddOrEditSubMenuFragment : Fragment() {
 	var menuId: Int = 0
 	lateinit var subMenu: SubMenu
+	var sub_menu_name:String=""
+
 
 	companion object {
 		fun newInstance(menuId: Int, subMenuId: Int): AddOrEditSubMenuFragment {
@@ -63,9 +66,11 @@ class AddOrEditSubMenuFragment : Fragment() {
 				menuId = arg.getInt(ARG_MENU_ID_ADD_OR_EDIT_SUB_MENU_FRAGMENT, 0)
 				subMenu = SubMenu()
 				subMenu.menuId = menuId
-				subMenu.order = findLastOrderNumber(menuId) + 1
+				subMenu.order = findLastOrderNumber() + 1
+				subMenu.secondOrder=findLastOrderNumber()+1
 			}
 		}
+		sub_menu_name=subMenu.name
 
 
 	}
@@ -93,16 +98,32 @@ class AddOrEditSubMenuFragment : Fragment() {
 
 		}
 		btn_save_sub_menu.setOnClickListener {
+			try {
+				subMenu.name = edit_text_add_or_edit_sub_menu.text.toString()
+			} catch (e: Exception) {
+			}
+
 			if (edit_text_add_or_edit_sub_menu.text.toString() == "") {
-				Toast.makeText(
+				Toasty.error(
 					view.context,
 					"یک نام برای دسته بندی انتخاب کنید",
-					Toast.LENGTH_SHORT
+					Toast.LENGTH_SHORT,true
 				).show()
-			} else {
+			} else if (isChanged()) {
+				Toasty.success(
+					view.context,
+					"تغییرات با موفقیت اعمال شد",
+					Toast.LENGTH_SHORT,true
+				).show()
 				subMenu.name = edit_text_add_or_edit_sub_menu.text.toString()
 				updateOrInsert(subMenu)
 				goToSubMenu()
+			}else{
+				Toasty.info(
+					view.context,
+					"نام تغییری نکرده است",
+					Toast.LENGTH_SHORT,true
+				).show()
 			}
 		}
 		img_btn_back_btn.setOnClickListener {
@@ -119,12 +140,11 @@ class AddOrEditSubMenuFragment : Fragment() {
 
 	}
 
-	private fun findLastOrderNumber(menuId: Int): Long {
+	private fun findLastOrderNumber(): Long {
 		var lastOrder: Long = 1
 
-		val subMenuList: MutableList<SubMenu>
-		subMenuList =
-			(activity as ManagementActivity).appDataBase.subMenuDao().getAllWithMenuId(menuId)
+		val subMenuList: MutableList<SubMenu> =
+			(activity as ManagementActivity).appDataBase.subMenuDao().getAll()
 		for (i in 0 until subMenuList.size - 1) {
 			var t = subMenuList.indices
 			if (subMenuList[i].order > subMenuList[i + 1].order) {
@@ -140,5 +160,8 @@ class AddOrEditSubMenuFragment : Fragment() {
 		val callback: ManagementPanelAdapter.CallBack =
 			this@AddOrEditSubMenuFragment.activity as ManagementActivity
 		callback.getFragmentToLoad(menuId - 1)
+	}
+	fun isChanged():Boolean{
+		return subMenu.name!=sub_menu_name
 	}
 }

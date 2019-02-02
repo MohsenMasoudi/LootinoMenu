@@ -1,21 +1,19 @@
 package ir.atriatech.lootinomenu.food_detail
 
 import AppDH
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import com.example.beautyshopapplication.base.BaseActivity
-import com.squareup.picasso.Picasso
 import ir.atriatech.lootinomenu.EXTERA_FOOD_DETAIL_ACTIVITY
+import ir.atriatech.lootinomenu.IMAGE_ASSETS_ADDRESS_BIG
 import ir.atriatech.lootinomenu.R
 import ir.atriatech.lootinomenu.data_base.room.AppDataBase
-import ir.atriatech.lootinomenu.login.LoginActivity
-import ir.atriatech.lootinomenu.main.MainActivity
-import ir.atriatech.lootinomenu.main_menu.MainMenuActivity
 import ir.atriatech.lootinomenu.model.Food
 import kotlinx.android.synthetic.main.activity_food_detail.*
-import kotlinx.android.synthetic.main.item_management_food_list.view.*
+import java.text.NumberFormat
+import java.util.*
 import javax.inject.Inject
 
 class FoodDetailActivity : BaseActivity() {
@@ -40,6 +38,7 @@ class FoodDetailActivity : BaseActivity() {
 		}
 	}
 
+	@SuppressLint("SetTextI18n")
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
 		component.inject(this)
@@ -51,19 +50,26 @@ class FoodDetailActivity : BaseActivity() {
 		}
 		food = appDataBase.foodDao().findById(foodId)
 		txt_name.text = food.productName
-		txt_price.text = food.price.toString() + " تومان"
+		val format = NumberFormat.getNumberInstance(Locale.US).format(food.price)
+
+
+		txt_price.text = "$format تومان "
 		txt_detail.text = food.productDetail
 		btn_back_to_main_menu.setOnClickListener { this@FoodDetailActivity.finish() }
 		img_btn_back_btn.setOnClickListener {
-//			val launch=MainActivity.newIntent(this@FoodDetailActivity)
-//			launch.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-//			startActivity(launch)
 			this@FoodDetailActivity.finish()
 		}
-		Picasso.get().load(food.picPath).placeholder(R.drawable.default_image).into(img_view_activity_food_detail)
+		val frescoFilPath = IMAGE_ASSETS_ADDRESS_BIG + food.id + ".jpg"
+		if (food.picPath==null) {
+			img_view_activity_food_detail.setImageURI(frescoFilPath)
+
+		}else{
+			img_view_activity_food_detail.setImageURI(food.picPath,applicationContext)
+
+		}
+		img_view_activity_food_detail.hierarchy.setPlaceholderImage(R.drawable.default_image)
+
 
 	}
-//	interface CallBack{
-//		fun finishActivity()
-//	}
+
 }

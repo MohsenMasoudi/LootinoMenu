@@ -2,36 +2,39 @@
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:app="http://schemas.android.com/apk/res-auto"
 	android:layout_width="match_parent"
-	android:layout_height="50dp"
+	android:layout_height="60dp"
+	android:layout_marginTop="2dp"
+	android:layout_marginBottom="2dp"
 	app:cardBackgroundColor="@color/back_ground_item">
 
 	<androidx.constraintlayout.widget.ConstraintLayout xmlns:tools="http://schemas.android.com/tools"
 		android:layout_width="match_parent"
-		android:layout_height="50dp"
-		android:layout_marginTop="2dp"
-		android:layout_marginBottom="2dp">
+		android:layout_height="60dp"
+	>
 
 
 		<TextView
 			android:id="@+id/txt_item_sub_menu"
 			android:layout_width="wrap_content"
 			android:layout_height="50dp"
-			android:layout_marginEnd="56dp"
+			android:layout_marginEnd="66dp"
 			android:layout_marginRight="16dp"
-			android:gravity="center_vertical"
 			android:textColor="@color/white"
 			android:textSize="16sp"
+			android:ellipsize="end"
+			android:gravity="center_vertical|start"
+			android:textAlignment="viewStart"
 			app:layout_constraintRight_toRightOf="parent"
 			app:layout_constraintTop_toTopOf="parent"
 			tools:ignore="RtlHardcoded" />
 
 		<ImageView
 			android:id="@+id/img_edit_item_sub_menu"
-			android:layout_width="24dp"
-			android:layout_height="24dp"
-			android:layout_marginLeft="16dp"
+			android:layout_width="40dp"
+			android:layout_height="50dp"
+			android:layout_marginLeft="8dp"
 			android:contentDescription="@string/app_name"
-			android:scaleType="fitCenter"
+			android:scaleType="centerInside"
 			android:src="@drawable/ic_edit"
 			app:layout_constraintBottom_toBottomOf="parent"
 			app:layout_constraintLeft_toLeftOf="parent"
@@ -40,11 +43,10 @@
 
 		<ImageView
 			android:id="@+id/img_add_food_to_sub_menu"
-			android:layout_width="24dp"
-			android:layout_height="24dp"
-			android:layout_marginLeft="16dp"
+			android:layout_width="40dp"
+			android:layout_height="50dp"
 			android:contentDescription="@string/app_name"
-			android:scaleType="fitCenter"
+			android:scaleType="centerInside"
 			android:src="@drawable/ic_add"
 			app:layout_constraintBottom_toBottomOf="parent"
 			app:layout_constraintLeft_toRightOf="@id/img_edit_item_sub_menu"
@@ -52,31 +54,28 @@
 			tools:ignore="RtlHardcoded" />
 		<ImageView
 			android:id="@+id/img_delete_item_sub_menu"
-			android:layout_width="24dp"
-			android:layout_height="24dp"
-			android:layout_marginLeft="16dp"
+			android:layout_width="40dp"
+			android:layout_height="50dp"
 			android:contentDescription="@string/app_name"
-			android:scaleType="fitCenter"
+			android:scaleType="centerInside"
 			android:src="@drawable/ic_delete"
 			app:layout_constraintBottom_toBottomOf="parent"
 			app:layout_constraintLeft_toRightOf="@id/img_add_food_to_sub_menu"
 			app:layout_constraintTop_toTopOf="parent"
 			tools:ignore="RtlHardcoded" />
 
-		<androidx.appcompat.widget.AppCompatImageButton
+		<ImageView
 			android:id="@+id/img_move_item_sub_menu"
 
-			android:layout_width="50dp"
-			android:layout_height="50dp"
+			android:layout_width="60dp"
+			android:layout_height="60dp"
 			android:layout_marginLeft="16dp"
 			android:contentDescription="@string/app_name"
 			android:scaleType="centerInside"
 			android:src="@drawable/ic_move"
 			app:layout_constraintBottom_toBottomOf="parent"
-			app:layout_constraintLeft_toRightOf="@id/txt_item_sub_menu"
 			app:layout_constraintRight_toRightOf="parent"
 			app:layout_constraintTop_toTopOf="parent"
-			android:background="?attr/selectableItemBackgroundBorderless"
 			android:clickable="true"
 			tools:ignore="RtlHardcoded"
 			android:focusable="true" />

@@ -19,7 +19,6 @@ import com.h6ah4i.android.widget.advrecyclerview.draggable.RecyclerViewDragDropM
 import androidx.recyclerview.widget.SimpleItemAnimator
 import ir.atriatech.lootinomenu.management.ManagementActivityCallBack
 import ir.atriatech.lootinomenu.management.add_or_edit_sub_menu.AddOrEditSubMenuFragment
-import ir.atriatech.lootinomenu.management.management_panel.ManagementPanelAdapter
 import ir.atriatech.lootinomenu.management.management_panel.ManagementPanelFragment
 
 

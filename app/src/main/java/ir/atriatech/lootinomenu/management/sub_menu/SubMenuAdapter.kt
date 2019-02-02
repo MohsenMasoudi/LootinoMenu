@@ -2,6 +2,7 @@ package ir.atriatech.lootinomenu.management.sub_menu
 
 import AppDH
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,17 +15,13 @@ import ir.atriatech.lootinomenu.R
 import ir.atriatech.lootinomenu.data_base.room.AppDataBase
 import ir.atriatech.lootinomenu.management.ManagementActivity
 import ir.atriatech.lootinomenu.management.ManagementActivityCallBack
+import ir.atriatech.lootinomenu.management.ManagementCallBackForDeleteSubMenuWarning
 import ir.atriatech.lootinomenu.management.add_or_edit_sub_menu.AddOrEditSubMenuFragment
 import ir.atriatech.lootinomenu.management.management_food_list.ManagementFoodListFragment
 import ir.atriatech.lootinomenu.management.management_panel.ManagementPanelAdapter
-import ir.atriatech.lootinomenu.model.Food
 import ir.atriatech.lootinomenu.model.SubMenu
 import kotlinx.android.synthetic.main.item_sub_menu_recycler_view.view.*
 import javax.inject.Inject
-import cn.pedant.SweetAlert.SweetAlertDialog
-
-
-
 
 
 class SubMenuAdapter : RecyclerView.Adapter<SubMenuAdapter.SubMenuViewHolder>()
@@ -83,6 +80,11 @@ class SubMenuAdapter : RecyclerView.Adapter<SubMenuAdapter.SubMenuViewHolder>()
 		for (i in subMenuList.indices) {
 			subMenuList[i].order = setOrder
 			setOrder++
+			Log.d(
+				"tag26",
+				subMenuList[i].name + " " + subMenuList[i].order.toString() + " " + subMenuList[i].secondOrder.toString()
+			)
+
 
 		}
 		notifyDataSetChanged()
@@ -122,8 +124,8 @@ class SubMenuAdapter : RecyclerView.Adapter<SubMenuAdapter.SubMenuViewHolder>()
 		fun bindUI(subMenu: SubMenu) {
 			val callback: ManagementPanelAdapter.CallBack = context as ManagementActivity
 			val managementActivityCallBack: ManagementActivityCallBack = context
+			val deleteSubMenuWarning: ManagementCallBackForDeleteSubMenuWarning = context
 			itemView.txt_item_sub_menu.text = subMenu.name
-//			itemView.txt_item_sub_menu.text = subMenu.name + subMenu.order
 			itemView.img_edit_item_sub_menu.setOnClickListener {
 
 				managementActivityCallBack.ManagmentFragmentLoader(
@@ -135,18 +137,9 @@ class SubMenuAdapter : RecyclerView.Adapter<SubMenuAdapter.SubMenuViewHolder>()
 
 			}
 			itemView.img_delete_item_sub_menu.setOnClickListener {
-				val listOfFood: MutableList<Food> =
-					context.appDataBase.foodDao()
-						.findBySubId(subMenu.subMenuId)
-				for (i in listOfFood.indices) {
-					listOfFood[i].subMenuId = 0
 
-				}
-				context.appDataBase.foodDao()
-					.updateAll(foodList = listOfFood)
+				deleteSubMenuWarning.deleteWarningCallBack(subMenu)
 
-				context.appDataBase.subMenuDao().delete(subMenu)
-				callback.getFragmentToLoad(subMenu.menuId - 1)
 			}
 			itemView.img_add_food_to_sub_menu.setOnClickListener {
 				managementActivityCallBack.ManagmentFragmentLoader(
@@ -157,23 +150,8 @@ class SubMenuAdapter : RecyclerView.Adapter<SubMenuAdapter.SubMenuViewHolder>()
 			}
 
 		}
-//fun deletWarning(context: Context){
-//	SweetAlertDialog(context, SweetAlertDialog.WARNING_TYPE)
-//		.setTitleText("می خواهید این بخش را حذف کنید؟")
-//		.setCancelText("کنسل")
-//		.setConfirmText("بله")
-//		.showCancelButton(true)
-//		.setConfirmClickListener( SweetAlertDialog.OnSweetClickListener() {
-//
-////			public void onClick(SweetAlertDialog sDialog) {
-////				sDialog.dismissWithAnimation();
-////			}
-//			sweetAlertDialog ->
-//	})
-//		.setCancelClickListener {
-//				sDialog -> sDialog.cancel() }
-//		.show()
-//}
+
+
 	}
 
 	init {

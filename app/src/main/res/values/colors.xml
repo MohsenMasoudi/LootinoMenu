@@ -17,4 +17,6 @@
 	<color name="main_menu_item_color">#979797</color>
 	<color name="main_menu_sub_menu_item_color">#3c3c3c</color>
 	<color name="main_menu_header_item_color">#515151</color>
+	<color name="gallery">#e0e0e0</color>
+	<color name="dove_gray">#666666</color>
 </resources>

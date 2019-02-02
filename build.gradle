@@ -7,7 +7,7 @@ buildscript {
             'compileSdk'           : 28,
             'supportVer'           : '1.0.0',
             'materialVer'          : '1.1.0-alpha01',
-            'constraint'           : '2.0.0-alpha3',
+            'constraint'           : '1.1.3',
             'buildTools'           : '28.0.3',
             'androidPlugin'        : '3.5.0-alpha02',
             'kotlin'               : '1.3.10',

@@ -8,7 +8,7 @@ import androidx.room.OnConflictStrategy
 
 @Dao
 interface SubMenuDao {
-	@Query("SELECT * FROM sub_menu")
+	@Query("SELECT * FROM sub_menu Order BY `order` ASC")
 	fun getAll(): MutableList<SubMenu>
 
 	@Query("SELECT * FROM sub_menu where subMenuId LIKE :id")

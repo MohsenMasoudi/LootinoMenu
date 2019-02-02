@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import com.example.beautyshopapplication.base.BaseActivity
+import es.dmoral.toasty.Toasty
 import ir.atriatech.lootinomenu.ADMIN_NAME
 import ir.atriatech.lootinomenu.ADMIN_PASS
 import ir.atriatech.lootinomenu.R
@@ -33,7 +34,7 @@ class LoginActivity : BaseActivity() {
 				startActivity(ManagementActivity.newIntent(this))
 				this.finish()
 			}else{
-				Toast.makeText(this@LoginActivity,getString(R.string.wrong_name_or_pass), Toast.LENGTH_SHORT).show()
+				Toasty.error(this@LoginActivity,getString(R.string.wrong_name_or_pass), Toast.LENGTH_SHORT).show()
 
 			}
 

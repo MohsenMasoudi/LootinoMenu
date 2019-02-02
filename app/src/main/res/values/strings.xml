@@ -27,4 +27,7 @@
 	<string name="price_of_product">قیمت محصول (تومان)</string>
 	<string name="product_name">نام محصول</string>
 	<string name="explain_for_product">توضیحات مربوط به محصول</string>
+	<string name="do_delete">حذف کنید؟</string>
+	<string name="from_menu">را از منوی</string>
+	<string name="do_you_want">می خواهید</string>
 </resources>

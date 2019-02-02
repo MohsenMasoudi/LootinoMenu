@@ -1,0 +1,63 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools">
+
+	<data>
+
+		<variable
+			name="menuName"
+			type="String" />
+	</data>
+
+	<androidx.constraintlayout.widget.ConstraintLayout
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		tools:context=".management.sub_menu.SubMenuFragment">
+
+		<androidx.appcompat.widget.Toolbar
+			android:id="@+id/my_toolbar"
+			android:layout_width="match_parent"
+			android:layout_height="56dp"
+			android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+			app:contentInsetEnd="0dp"
+			app:contentInsetLeft="0dp"
+			app:contentInsetRight="0dp"
+			app:contentInsetStart="0dp"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toTopOf="parent"
+			app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+
+			<androidx.constraintlayout.widget.ConstraintLayout
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:background="@color/back_ground_toolbar">
+
+				<ImageButton
+					android:id="@+id/img_btn_back_choose_subMenu"
+					style="@style/ButtonEmpty"
+					android:layout_width="50dp"
+					android:layout_height="match_parent"
+					android:focusable="true"
+					android:scaleType="centerInside"
+					android:src="@drawable/ic_back"
+					app:layout_constraintRight_toRightOf="parent"
+					app:layout_constraintTop_toTopOf="parent"
+					tools:ignore="ContentDescription" />
+
+			</androidx.constraintlayout.widget.ConstraintLayout>
+		</androidx.appcompat.widget.Toolbar>
+
+		<androidx.recyclerview.widget.RecyclerView
+			android:id="@+id/recycler_view_choose_sub_menu"
+			android:layout_width="match_parent"
+			android:layout_height="0dp"
+			android:background="@color/back_ground"
+			app:layout_constraintBottom_toBottomOf="parent"
+			app:layout_constraintLeft_toLeftOf="parent"
+			app:layout_constraintRight_toRightOf="parent"
+			app:layout_constraintTop_toBottomOf="@id/my_toolbar" />
+
+
+	</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

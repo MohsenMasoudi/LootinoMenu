@@ -14,7 +14,7 @@
 			android:id="@+id/my_toolbar"
 			android:layout_width="match_parent"
 			android:layout_height="56dp"
-			android:background="?attr/colorPrimary"
+			android:background="@color/colorPrimary"
 			android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
 			app:contentInsetEnd="0dp"
 			app:contentInsetLeft="0dp"
@@ -107,7 +107,7 @@
 			android:drawableRight="@drawable/ic_vpn_key_white_24dp"
 			android:drawablePadding="10dp"
 			android:hint="@string/password"
-			android:inputType="textVisiblePassword"
+			android:inputType="textVisiblePassword|number"
 
 			android:textColor="@color/white"
 			android:textSize="16sp"

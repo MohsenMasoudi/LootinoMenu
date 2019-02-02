@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.SharedPreferences
 import com.example.kotlintest.util.MyStringFormat
 import com.google.gson.Gson
+import com.squareup.picasso.Picasso
 import dagger.Component
 import io.reactivex.disposables.CompositeDisposable
 import ir.atriatech.core.di.CoreComponent
@@ -32,4 +33,5 @@ interface BaseAppComponent {
 
 	fun myStringFormat(): MyStringFormat
 	fun appDataBase(): AppDataBase
+	fun picasso():Picasso
 }

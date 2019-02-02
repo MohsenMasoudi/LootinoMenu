@@ -3,7 +3,10 @@
 	xmlns:app="http://schemas.android.com/apk/res-auto"
 	xmlns:tools="http://schemas.android.com/tools">
 
-
+<androidx.core.widget.NestedScrollView
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:fillViewport="true">
 	<androidx.constraintlayout.widget.ConstraintLayout
 		android:id="@+id/view_base_login_activity"
 		android:layout_width="match_parent"
@@ -15,7 +18,7 @@
 			android:id="@+id/my_toolbar"
 			android:layout_width="match_parent"
 			android:layout_height="56dp"
-			android:background="?attr/colorPrimary"
+			android:background="@color/colorPrimary"
 			android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
 			app:contentInsetEnd="0dp"
 			app:contentInsetLeft="0dp"
@@ -65,10 +68,14 @@
 			android:layout_width="fill_parent"
 			android:layout_height="50dp"
 			android:layout_margin="16dp"
+			android:singleLine="true"
+
 			android:layout_marginStart="50dp"
 			android:drawableRight="@drawable/ic_add_or_edit"
 			android:drawablePadding="10dp"
 			android:hint="@string/product_name"
+			android:maxLength="30"
+			android:maxLines="1"
 			android:textColor="@color/white"
 			android:textSize="16sp"
 			android:theme="@style/editTextLogin"
@@ -83,6 +90,10 @@
 			android:layout_width="fill_parent"
 			android:layout_height="50dp"
 			android:layout_margin="16dp"
+			android:maxLength="9"
+			android:maxLines="1"
+			android:singleLine="true"
+
 			android:layout_marginStart="50dp"
 			android:drawableRight="@drawable/ic_add_or_edit"
 			android:drawablePadding="10dp"
@@ -125,19 +136,21 @@
 			app:layout_constraintBottom_toBottomOf="parent"
 			app:layout_constraintEnd_toEndOf="parent"
 			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toBottomOf="@+id/text_view_choose_sub_menu_add_or_remove"
 			app:strokeColor="@color/white"
 			app:strokeWidth="2dp" />
 
-		<androidx.appcompat.widget.AppCompatSpinner
-			android:id="@+id/spinner"
+		<androidx.appcompat.widget.AppCompatEditText
+			android:id="@+id/text_view_choose_sub_menu_add_or_remove"
 			android:popupBackground="@color/main_menu_sub_menu_item_color"
 			android:layout_width="match_parent"
 			android:layout_height="50dp"
+			android:drawablePadding="8dp"
 			android:layout_margin="16dp"
-			style="?android:attr/spinnerItemStyle"
-
+			style="style/spinnerItemStyle"
+			android:focusable="false"
+			android:theme="@style/editTextLogin"
 			app:layout_constraintBaseline_creator="@integer/google_play_services_version"
-			android:theme="@style/mySpinnerItemStyle"
 			android:textColor="@android:color/white"
 			android:drawableRight="@drawable/ic_choose_sub_menu"
 			app:layout_constraintEnd_toEndOf="parent"
@@ -172,12 +185,13 @@
 			app:layout_constraintRight_toRightOf="@+id/img_uploadArea"
 			app:layout_constraintTop_toTopOf="@+id/img_uploadArea" />
 
-		<ImageView
+		<com.facebook.drawee.view.SimpleDraweeView
 			android:id="@+id/uploadIcon"
 			android:layout_width="0dp"
 			android:layout_height="0dp"
 			android:clickable="false"
-			android:scaleType="fitXY"
+			app:actualImageScaleType="centerCrop"
+
 			android:contentDescription="@string/app_name"
 			android:focusable="true"
 			android:focusableInTouchMode="true"
@@ -204,4 +218,5 @@
 			app:layout_constraintRight_toRightOf="@+id/img_uploadArea"
 			app:layout_constraintTop_toBottomOf="@+id/previewImage" />
 	</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>
 </layout>

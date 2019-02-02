@@ -6,20 +6,93 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
+import cn.pedant.SweetAlert.SweetAlertDialog
 import com.example.beautyshopapplication.base.BaseActivity
+import com.gitonway.lee.niftymodaldialogeffects.lib.Effectstype
+import com.gitonway.lee.niftymodaldialogeffects.lib.NiftyDialogBuilder
 import ir.atriatech.lootinomenu.R
 import ir.atriatech.lootinomenu.data_base.room.AppDataBase
+import ir.atriatech.lootinomenu.management.add_or_edit_food.AddOrEditFoodFragment
 import ir.atriatech.lootinomenu.management.management_food_list.ManagementFoodListFragment
 import ir.atriatech.lootinomenu.management.management_panel.ManagementPanelAdapter
 import ir.atriatech.lootinomenu.management.management_panel.ManagementPanelFragment
 import ir.atriatech.lootinomenu.management.sub_menu.SubMenuFragment
-import pub.devrel.easypermissions.EasyPermissions
+import ir.atriatech.lootinomenu.model.Food
+import ir.atriatech.lootinomenu.model.SubMenu
 import javax.inject.Inject
 
+
 class ManagementActivity : BaseActivity(), ManagementPanelAdapter.CallBack,
-	ManagementActivityCallBack {
+	ManagementActivityCallBack, ManagementCallBackForDeleteSubMenuWarning,
+	ManagementCallBackForDeleteFoodWarning, callBackChoosSubMenu {
+	lateinit var dialogBuilder: NiftyDialogBuilder
+	override fun loadLastFragment() {
+		val beforeLast = fragmentList.size - 2
+		loadFragment(fragmentList[beforeLast])
+	}
+
+	var fragmentList: MutableList<Fragment> = mutableListOf()
+	override fun deleteWarningCallBack(food: Food) {
+//		deleteWarning(food)
+		deleteDialog(food)
+	}
+
+	override fun deleteWarningCallBack(subMenu: SubMenu) {
+		deleteDialog(subMenu)
+	}
+
 	override fun ManagmentFragmentLoader(fragment: Fragment) {
 		loadFragment(fragment)
+	}
+
+
+	fun deleteWarning(subMenu: SubMenu) {
+		SweetAlertDialog(this, SweetAlertDialog.WARNING_TYPE)
+			.setTitleText("می خواهید این بخش را حذف کنید؟")
+			.setCancelText("خیر")
+			.setConfirmText("بله")
+			.showCancelButton(true)
+			.setConfirmClickListener { sDialod ->
+
+				sDialod.changeAlertType(SweetAlertDialog.SUCCESS_TYPE)
+				val listOfFood: MutableList<Food> =
+					appDataBase.foodDao()
+						.findBySubId(subMenu.subMenuId)
+				for (i in listOfFood.indices) {
+					listOfFood[i].subMenuId = 0
+//					sDialod.dismissWithAnimation()
+					sDialod.dismissWithAnimation()
+
+				}
+				appDataBase.foodDao()
+					.updateAll(foodList = listOfFood)
+
+				appDataBase.subMenuDao().delete(subMenu)
+				getFragmentToLoad(subMenu.menuId - 1)
+
+			}
+			.setCancelClickListener { sDialog -> sDialog.cancel() }
+			.show()
+	}
+
+	fun deleteWarning(food: Food) {
+		SweetAlertDialog(this, SweetAlertDialog.WARNING_TYPE)
+			.setTitleText("می خواهید این غذا را حذف کنید؟")
+			.setCancelText("خیر")
+			.setConfirmText("بله")
+			.showCancelButton(true)
+			.setConfirmClickListener { sDialod ->
+				sDialod.changeAlertType(SweetAlertDialog.SUCCESS_TYPE)
+
+				appDataBase.foodDao()
+					.delete(food)
+				ManagmentFragmentLoader(ManagementFoodListFragment.newInstance(food.subMenuId))
+//				getFragmentToLoad(subMenu.menuId - 1)
+				sDialod.dismissWithAnimation()
+
+			}
+			.setCancelClickListener { sDialog -> sDialog.cancel() }
+			.show()
 	}
 
 	protected val component by lazy { AppDH.baseComponent() }
@@ -44,7 +117,8 @@ class ManagementActivity : BaseActivity(), ManagementPanelAdapter.CallBack,
 				loadFragment(
 					ManagementFoodListFragment.newInstance(
 						0
-					))
+					)
+				)
 			}
 
 		}
@@ -69,6 +143,7 @@ class ManagementActivity : BaseActivity(), ManagementPanelAdapter.CallBack,
 	}
 
 	private fun loadFragment(fragment: Fragment) {
+		fragmentList.add(fragment)
 		supportFragmentManager.beginTransaction()
 			.replace(R.id.management_activity_container, fragment)
 			.commit()
@@ -78,8 +153,97 @@ class ManagementActivity : BaseActivity(), ManagementPanelAdapter.CallBack,
 		super.onBackPressed()
 	}
 
+	override fun onDestroy() {
+		super.onDestroy()
+		AddOrEditFoodFragment.foodCompanion = Food()
+	}
+
+	override fun onStop() {
+		super.onStop()
+	}
+
+	fun deleteDialog(food: Food) {
+
+		dialogBuilder = NiftyDialogBuilder.getInstance(this)
+		dialogBuilder
+			.withTitle("اخطار")
+			.withTitleColor("#FFFFFF")
+			.withDividerColor("#515151")
+			.withMessage("می خواهید "+food.productName+" را حذف کنید؟")
+			.withMessageColor("#FFFFFFFF")
+			.withDialogColor("#3c3c3c")
+			.withIcon(R.drawable.ic_error)
+			.withDuration(700)
+			.withEffect(Effectstype.Fadein)
+			.withButton1Text("بله")
+			.withButton2Text("خیر")
+			.isCancelableOnTouchOutside(true)
+//
+			.setButton1Click {
+				appDataBase.foodDao()
+					.delete(food)
+				ManagmentFragmentLoader(ManagementFoodListFragment.newInstance(food.subMenuId))
+				dialogBuilder.dismiss()
+
+			}
+
+			.setButton2Click {
+				dialogBuilder.dismiss()
+			}
+			.show()
+	}fun deleteDialog(subMenu: SubMenu) {
+		dialogBuilder = NiftyDialogBuilder.getInstance(this)
+		dialogBuilder
+			.withTitle("اخطار")
+			.withTitleColor("#FFFFFF")
+			.withDividerColor("#515151")
+			.withMessage(" می خواهید بخش "+ subMenu.name +" را حذف کنید؟")
+			.withMessageColor("#FFFFFFFF")
+			.withDialogColor("#3c3c3c")
+			.withIcon(R.drawable.ic_error)
+			.withDuration(700)
+			.withEffect(Effectstype.Fadein)
+			.withButton1Text("بله")
+			.withButton2Text("خیر")
+			.isCancelableOnTouchOutside(true)
+			.setButton1Click {
+				val listOfFood: MutableList<Food> =
+					appDataBase.foodDao()
+						.findBySubId(subMenu.subMenuId)
+				for (i in listOfFood.indices) {
+					listOfFood[i].subMenuId = 0
+
+				}
+				appDataBase.foodDao()
+					.updateAll(foodList = listOfFood)
+
+				appDataBase.subMenuDao().delete(subMenu)
+				getFragmentToLoad(subMenu.menuId - 1)
+				dialogBuilder.dismiss()
+
+
+			}
+
+			.setButton2Click {
+				dialogBuilder.dismiss()
+			}
+			.show()
+	}
+
 }
 
 interface ManagementActivityCallBack {
 	fun ManagmentFragmentLoader(fragment: Fragment)
+}
+
+interface ManagementCallBackForDeleteSubMenuWarning {
+	fun deleteWarningCallBack(subMenu: SubMenu)
+}
+
+interface ManagementCallBackForDeleteFoodWarning {
+	fun deleteWarningCallBack(food: Food)
+}
+
+interface callBackChoosSubMenu {
+	fun loadLastFragment()
 }

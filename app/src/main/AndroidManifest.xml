@@ -8,12 +8,13 @@
 		android:name=".MyApp"
 		android:allowBackup="true"
 		android:fullBackupContent="false"
-		android:icon="@mipmap/ic_launcher"
+		android:icon="@mipmap/ic_launcher_lotino_dark"
 		android:label="@string/app_name"
-		android:roundIcon="@mipmap/ic_launcher_round"
+		android:roundIcon="@mipmap/ic_launcher_lotino_dark"
 		android:supportsRtl="true"
 		android:theme="@style/AppTheme"
-		tools:ignore="GoogleAppIndexingWarning">
+		tools:ignore="GoogleAppIndexingWarning"
+		tools:replace="android:icon">
 		<activity android:name=".food_detail.FoodDetailActivity"
 			android:screenOrientation="portrait"
 			android:theme="@style/AppThemeNoActionBar"/>
