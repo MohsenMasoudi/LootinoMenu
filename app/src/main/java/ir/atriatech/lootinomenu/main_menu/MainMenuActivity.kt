@@ -5,6 +5,7 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Adapter
+import androidx.recyclerview.widget.RecyclerView
 import com.example.beautyshopapplication.base.BaseActivity
 import ir.atriatech.lootinomenu.EXTERA_MAIN_MENU_ACTIVITY
 import ir.atriatech.lootinomenu.R
@@ -12,6 +13,9 @@ import ir.atriatech.lootinomenu.data_base.room.AppDataBase
 import ir.atriatech.lootinomenu.food_detail.FoodDetailActivity
 import kotlinx.android.synthetic.main.activity_main_menu.*
 import javax.inject.Inject
+import eu.davidea.flexibleadapter.items.IFlexible
+
+
 
 class MainMenuActivity : BaseActivity() {
 
