@@ -80,8 +80,6 @@ class ManagementFoodListAdapter
 			}
 			itemView.simple_draw_food_menu_item.hierarchy.setPlaceholderImage(R.drawable.default_image)
 			if (food.subMenuId == 0) {
-//			itemView.img_btn_edit_item_management_food_list.visibility=View.INVISIBLE
-
 			}
 		}
 

@@ -5,6 +5,7 @@ import android.content.Context
 import android.content.Intent
 import android.database.sqlite.SQLiteConstraintException
 import android.graphics.Bitmap
+import android.graphics.Color
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
@@ -14,9 +15,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import cn.pedant.SweetAlert.SweetAlertDialog
 import com.himanshurawat.imageworker.Extension
 import com.himanshurawat.imageworker.ImageWorker
-import com.squareup.picasso.Picasso
 import com.theartofdev.edmodo.cropper.CropImage
 import com.theartofdev.edmodo.cropper.CropImageView
 import es.dmoral.toasty.Toasty
@@ -26,11 +27,16 @@ import ir.atriatech.lootinomenu.management.ManagementActivityCallBack
 import ir.atriatech.lootinomenu.management.choose_sub_menu.ChooseSubMenuFragment
 import ir.atriatech.lootinomenu.management.management_food_list.ManagementFoodListFragment
 import ir.atriatech.lootinomenu.model.Food
-import kotlinx.android.synthetic.main.fragment_add_or_edit_food.*
+import kotlinx.android.synthetic.main.fragment_add_or_edit_food2.*
 import java.io.ByteArrayOutputStream
 
 
 class AddOrEditFoodFragment : Fragment() {
+	lateinit var  pDialog: SweetAlertDialog
+
+	init {
+
+	}
 	lateinit var food: Food
 	var foodForChangCheck: Food = Food()
 	var foodId = 0
@@ -68,12 +74,13 @@ class AddOrEditFoodFragment : Fragment() {
 		savedInstanceState: Bundle?
 	): View? {
 		// Inflate the layout for this fragment
-		return inflater.inflate(R.layout.fragment_add_or_edit_food, container, false)
+		return inflater.inflate(R.layout.fragment_add_or_edit_food2, container, false)
 	}
 
 	override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 		super.onViewCreated(view, savedInstanceState)
-		if (foodId != 0 && menuId != 0) {
+		setDialog()
+		if (foodId != 0) {
 			val context = view.context as ManagementActivity
 			food = context.appDataBase.foodDao().findById(foodId)
 
@@ -100,6 +107,8 @@ class AddOrEditFoodFragment : Fragment() {
 		img_uploadArea.setOnClickListener {
 			CropImage.activity()
 				.setGuidelines(CropImageView.Guidelines.ON)
+				.setAspectRatio(4,3)
+				.setFixAspectRatio(true)
 				.start(view.context, this)
 		}
 		img_btn_back_btn.setOnClickListener {
@@ -108,6 +117,8 @@ class AddOrEditFoodFragment : Fragment() {
 
 		}
 		btn_save.setOnClickListener {
+//			pDialog.show()
+
 			try {
 				food.productName = edit_text_name.text.toString()
 				food.productDetail = edit_text_detail.text.toString()
@@ -142,12 +153,12 @@ class AddOrEditFoodFragment : Fragment() {
 						"تغییری انجام نشد",
 						Toast.LENGTH_SHORT, true
 					).show()
-					val callback: ManagementActivityCallBack = context as ManagementActivity
-					callback.ManagmentFragmentLoader(
-						ManagementFoodListFragment.newInstance(
-							subMenuId
-						)
-					)
+//					val callback: ManagementActivityCallBack = context as ManagementActivity
+//					callback.ManagmentFragmentLoader(
+//						ManagementFoodListFragment.newInstance(
+//							subMenuId
+//						)
+//					)
 				}
 			} else {
 				Toasty.error(
@@ -210,6 +221,7 @@ class AddOrEditFoodFragment : Fragment() {
 		val bitmap: Bitmap = MediaStore.Images.Media.getBitmap(context.contentResolver, uri)
 		ImageWorker.to(context).directory(IMAGE_DIRECTORY).subDirectory(IMAGE_SUB_DIRECTORY)
 			.setFileName(foodId.toString()).withExtension(Extension.JPEG).save(bitmap)
+
 		food.picPath = getImageUri(context, bitmap)
 		keepChanges()
 	}
@@ -238,14 +250,14 @@ class AddOrEditFoodFragment : Fragment() {
 	private fun checkNothingBeEmpty(): Boolean {
 		if (edit_text_name.text.toString() != "") {
 			if (edit_text_price.text.toString() != "") {
-				if (edit_text_detail.text.toString() != "") {
-					if (subMenuId != 0) {
-						if (menuId != 0) {
-							return true
 
-						}
-					}
-				}
+//					if (subMenuId != 0) {
+//						if (menuId != 0) {
+				return true
+
+
+//					}
+//				}
 			}
 		}
 		return false
@@ -254,9 +266,9 @@ class AddOrEditFoodFragment : Fragment() {
 
 	private fun updateOrInsert(food: Food) {
 		try {
-		food.productName = edit_text_name.text.toString()
-		food.productDetail = edit_text_detail.text.toString()
-		food.price = Integer.parseInt(edit_text_price.text.toString())
+			food.productName = edit_text_name.text.toString()
+			food.productDetail = edit_text_detail.text.toString()
+			food.price = Integer.parseInt(edit_text_price.text.toString())
 		} catch (e: Exception) {
 		}
 		try {
@@ -297,12 +309,17 @@ class AddOrEditFoodFragment : Fragment() {
 		if (foodCompanion.productDetail != "") {
 			edit_text_detail.setText(foodCompanion.productDetail)
 		}
+
 		if (foodCompanion.price != 0) {
 			edit_text_price.setText(foodCompanion.price.toString())
 		}
 		if (foodCompanion.picPath != null) {
-			Picasso.get().load(foodCompanion.picPath).into(uploadIcon)
+			uploadIcon.setImageURI(foodCompanion.picPath, context)
+			food.picPath = foodCompanion.picPath
+//			Picasso.get().load(foodCompanion.picPath).into(uploadIcon)
 			uploadText.visibility = View.INVISIBLE
+			previewImage.visibility = View.INVISIBLE
+
 
 		}
 
@@ -320,16 +337,19 @@ class AddOrEditFoodFragment : Fragment() {
 	}
 
 	fun isfoodChanged(): Boolean {
+		Log.d("tag27", ChooseSubMenuFragment.isSubMenuChanged.toString())
 		if (foodForChangCheck.productName == food.productName) {
 			if (foodForChangCheck.productDetail == food.productDetail) {
 				if (foodForChangCheck.price == food.price) {
 					if (foodForChangCheck.menuId == food.menuId) {
 						if (foodForChangCheck.picPath == food.picPath) {
-							if (foodForChangCheck.foodOrder == food.foodOrder){
-								if(foodForChangCheck.subMenuId == food.subMenuId){
+							if (foodForChangCheck.foodOrder == food.foodOrder) {
+								if (!ChooseSubMenuFragment.isSubMenuChanged) {
 									return false
 
 								}
+
+
 							}
 						}
 					}
@@ -341,4 +361,18 @@ class AddOrEditFoodFragment : Fragment() {
 
 	}
 
+	override fun onDestroy() {
+		super.onDestroy()
+		ChooseSubMenuFragment.isSubMenuChanged = false
+		if (pDialog.isShowing){
+			pDialog.dismissWithAnimation()
+		}
+
+	}
+	fun setDialog(){
+		pDialog= SweetAlertDialog(activity, SweetAlertDialog.PROGRESS_TYPE)
+		pDialog.progressHelper.barColor = Color.parseColor("#A5DC86")
+		pDialog.titleText = "Saving"
+		pDialog.setCancelable(false)
+	}
 }

@@ -20,8 +20,10 @@ class FoodCourserWrapper(cursor: Cursor) : CursorWrapper(cursor) {
         food.menuId=menuId
         food.subMenuId=subMenuId
         food.productName=productName
-//        food.productDetail=productDetail
+        food.productDetail=""
+        if (id==1||id==2||id==3) {
         food.productDetail="لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است."
+        }
         food.price=price
         food.foodOrder=foodOrder
         return food

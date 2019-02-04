@@ -1,24 +1,24 @@
 package ir.atriatech.lootinomenu.main_menu.main_menu_two_view_holder
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.squareup.picasso.Picasso
+import com.kodmap.library.kmrecyclerviewstickyheader.KmStickyListener
 import ir.atriatech.lootinomenu.R
 import ir.atriatech.lootinomenu.TYPE_FOOD
 import ir.atriatech.lootinomenu.TYPE_SUB_MENU
 import ir.atriatech.lootinomenu.model.Food
 import ir.atriatech.lootinomenu.model.SubMenu
-import javax.inject.Inject
+import kotlinx.android.synthetic.main.main_menu_header_item.view.*
 
-class MainMenuAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
-	protected val component by lazy { AppDH.baseComponent() }
 
-	init {
-		component.inject(this)
-	}
-	@Inject
-	lateinit var picasso: Picasso
+class MainMenuAdapter : RecyclerView.Adapter< RecyclerView.ViewHolder>()
+	 {
+
+
 	lateinit var twoViewList: MutableList<Any>
 	override fun getItemViewType(position: Int): Int {
 		if (twoViewList[position] is Food) {
@@ -29,15 +29,12 @@ class MainMenuAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 		return super.getItemViewType(position)
 	}
 
-	override fun onViewRecycled(holder: RecyclerView.ViewHolder) {
-//		super.onViewRecycled(holder)
-	}
 
 	override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
 		val layoutInflater = LayoutInflater.from(parent.context)
 		if (viewType == TYPE_FOOD) {
 			val view = layoutInflater.inflate(R.layout.main_menu_food_item, parent, false)
-			return FoodViewHolder(view,picasso)
+			return FoodViewHolder(view)
 		} else if (viewType == TYPE_SUB_MENU) {
 			val view = layoutInflater.inflate(R.layout.main_menu_header_item, parent, false)
 			return SubMenuViewHolder(view)
@@ -52,11 +49,16 @@ class MainMenuAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
 	override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
 		if (holder is FoodViewHolder) {
-			holder.setIsRecyclable(false)
+
 			holder.bindFoodUI(food = twoViewList[position] as Food)
 		} else if (holder is SubMenuViewHolder) {
-			holder.setIsRecyclable(false)
+
 			holder.bindHeaderUI(subMenu = twoViewList[position] as SubMenu)
 		}
 	}
+
+
+
+
+
 }

@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:clickable="true"
+	android:focusable="true">
+
+	<com.google.android.material.appbar.AppBarLayout
+		android:id="@+id/appBar"
+		android:layout_width="0dp"
+		android:layout_height="wrap_content"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toTopOf="parent">
+
+		<androidx.appcompat.widget.Toolbar
+			android:id="@+id/my_toolbar"
+			android:layout_width="match_parent"
+			android:layout_height="56dp"
+			android:background="@color/colorPrimary"
+			android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+			app:contentInsetEnd="0dp"
+			app:contentInsetLeft="0dp"
+			app:contentInsetRight="0dp"
+			app:contentInsetStart="0dp"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toTopOf="parent"
+			app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+
+			<androidx.constraintlayout.widget.ConstraintLayout
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:padding="16dp">
+
+				<ImageButton
+					android:id="@+id/img_btn_back_btn"
+					style="@style/ButtonEmpty"
+					android:layout_width="50dp"
+					android:layout_height="match_parent"
+					android:focusable="true"
+					android:scaleType="center"
+					android:src="@drawable/ic_close"
+					app:layout_constraintRight_toRightOf="parent"
+					app:layout_constraintTop_toTopOf="parent"
+					tools:ignore="ContentDescription" />
+
+				<TextView
+					android:id="@+id/txt_add_or_edit_title"
+					style="@style/IranSansBold"
+					android:layout_width="wrap_content"
+					android:layout_height="match_parent"
+					android:drawablePadding="10dp"
+					android:gravity="center"
+					android:text=""
+					android:textColor="@color/white"
+					android:textSize="16sp"
+					app:layout_constraintRight_toLeftOf="@id/img_btn_back_btn"
+					app:layout_constraintTop_toTopOf="parent" />
+			</androidx.constraintlayout.widget.ConstraintLayout>
+		</androidx.appcompat.widget.Toolbar>
+	</com.google.android.material.appbar.AppBarLayout>
+
+	<androidx.core.widget.NestedScrollView
+		android:layout_width="0dp"
+		android:layout_height="0dp"
+		android:fillViewport="true"
+		app:layout_constraintBottom_toBottomOf="parent"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/appBar">
+
+		<androidx.constraintlayout.widget.ConstraintLayout
+			android:id="@+id/view_base_login_activity"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:background="@color/back_ground"
+			tools:context=".login.LoginActivity"
+			android:focusable="true"
+			android:focusableInTouchMode="true">
+
+
+			<androidx.appcompat.widget.AppCompatEditText
+				android:id="@+id/edit_text_name"
+				android:layout_width="fill_parent"
+				android:layout_height="50dp"
+				android:layout_margin="16dp"
+				android:layout_marginStart="50dp"
+
+				android:drawableRight="@drawable/ic_add_or_edit"
+				android:drawablePadding="10dp"
+				android:hint="@string/product_name"
+				android:maxLength="30"
+				android:maxLines="1"
+				android:singleLine="true"
+				android:textColor="@color/white"
+				android:textSize="16sp"
+				android:theme="@style/editTextLogin"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toBottomOf="@+id/img_uploadArea"
+				tools:ignore="Autofill,RtlHardcoded" />
+
+			<androidx.appcompat.widget.AppCompatEditText
+				android:id="@+id/edit_text_price"
+				style="@style/IranSans"
+				android:layout_width="fill_parent"
+				android:layout_height="50dp"
+				android:layout_margin="16dp"
+				android:layout_marginStart="50dp"
+				android:drawableRight="@drawable/ic_add_or_edit"
+				android:drawablePadding="10dp"
+
+				android:hint="@string/price_of_product"
+				android:inputType="number"
+				android:maxLength="9"
+				android:maxLines="1"
+				android:singleLine="true"
+				android:textColor="@color/apple"
+				android:textSize="16sp"
+				android:theme="@style/editTextLogin"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toBottomOf="@+id/edit_text_name"
+				tools:ignore="Autofill,RtlHardcoded" />
+
+			<androidx.appcompat.widget.AppCompatEditText
+				android:id="@+id/edit_text_detail"
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content"
+				android:layout_margin="16dp"
+				android:layout_marginStart="50dp"
+				android:drawableRight="@drawable/ic_food_deatail"
+				android:drawablePadding="10dp"
+				android:hint="@string/explain_for_product"
+				android:minLines="3"
+				android:textColor="@color/white"
+				android:textSize="16sp"
+				android:theme="@style/editTextLogin"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toBottomOf="@+id/edit_text_price"
+				tools:ignore="Autofill,RtlHardcoded" />
+
+			<com.google.android.material.button.MaterialButton
+				android:id="@+id/btn_save"
+				style="@style/ButtonEmpty"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_margin="16dp"
+				android:text="ذخیره محصول"
+				android:textColor="@color/white"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toBottomOf="@+id/text_view_choose_sub_menu_add_or_remove"
+				app:strokeColor="@color/white"
+				app:strokeWidth="2dp" />
+
+			<androidx.appcompat.widget.AppCompatEditText
+				android:id="@+id/text_view_choose_sub_menu_add_or_remove"
+				style="style/spinnerItemStyle"
+				android:layout_width="match_parent"
+				android:layout_height="50dp"
+				android:layout_margin="16dp"
+				android:drawableRight="@drawable/ic_choose_sub_menu"
+				android:drawablePadding="8dp"
+				android:focusable="false"
+				android:popupBackground="@color/main_menu_sub_menu_item_color"
+				android:textColor="@android:color/white"
+				android:theme="@style/editTextLogin"
+				app:layout_constraintBaseline_creator="@integer/google_play_services_version"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toBottomOf="@+id/edit_text_detail" />
+
+			<ImageView
+				android:id="@+id/img_uploadArea"
+				android:layout_width="0dp"
+				android:layout_height="0dp"
+				android:layout_margin="16dp"
+				android:clickable="true"
+				android:contentDescription="@string/app_name"
+				android:focusable="true"
+				android:scaleType="fitXY"
+				android:src="@drawable/food_imag"
+				app:layout_constraintCircleRadius="15dp"
+				app:layout_constraintDimensionRatio="4:3"
+				app:layout_constraintLeft_toLeftOf="parent"
+				app:layout_constraintRight_toRightOf="parent"
+				app:layout_constraintTop_toTopOf="parent" />
+
+			<ImageView
+				android:id="@+id/previewImage"
+				android:layout_width="85dp"
+				android:layout_height="85dp"
+				android:layout_margin="16dp"
+				android:scaleType="fitCenter"
+				android:src="@drawable/ic_add_a_photo_white_48dp"
+				app:layout_constraintBottom_toBottomOf="@+id/img_uploadArea"
+				app:layout_constraintLeft_toLeftOf="@+id/img_uploadArea"
+				app:layout_constraintRight_toRightOf="@+id/img_uploadArea"
+				app:layout_constraintTop_toTopOf="@+id/img_uploadArea" />
+
+			<com.facebook.drawee.view.SimpleDraweeView
+				android:id="@+id/uploadIcon"
+				android:layout_width="0dp"
+				android:layout_height="0dp"
+				android:clickable="false"
+				android:contentDescription="@string/app_name"
+
+				android:focusable="true"
+				android:focusableInTouchMode="true"
+				android:src="@drawable/food_imag"
+				app:actualImageScaleType="centerCrop"
+				app:layout_constraintBottom_toBottomOf="@+id/img_uploadArea"
+				app:layout_constraintLeft_toLeftOf="@+id/img_uploadArea"
+				app:layout_constraintRight_toRightOf="@+id/img_uploadArea"
+				app:layout_constraintTop_toTopOf="@+id/img_uploadArea"
+				app:layout_constraintVertical_chainStyle="packed" />
+
+			<TextView
+				android:id="@+id/uploadText"
+				style="@style/IranSansBold"
+				android:layout_width="0dp"
+				android:layout_height="wrap_content"
+				android:clickable="false"
+				android:focusable="true"
+				android:focusableInTouchMode="true"
+				android:gravity="center"
+				android:text="افزودن تصویر"
+				android:textColor="@color/white"
+				app:layout_constraintBottom_toBottomOf="@+id/img_uploadArea"
+				app:layout_constraintLeft_toLeftOf="@+id/img_uploadArea"
+				app:layout_constraintRight_toRightOf="@+id/img_uploadArea"
+				app:layout_constraintTop_toBottomOf="@+id/previewImage" />
+		</androidx.constraintlayout.widget.ConstraintLayout>
+	</androidx.core.widget.NestedScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

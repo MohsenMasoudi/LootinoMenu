@@ -18,8 +18,8 @@ import ir.atriatech.lootinomenu.management.ManagementActivityCallBack
 import ir.atriatech.lootinomenu.management.ManagementCallBackForDeleteSubMenuWarning
 import ir.atriatech.lootinomenu.management.add_or_edit_sub_menu.AddOrEditSubMenuFragment
 import ir.atriatech.lootinomenu.management.management_food_list.ManagementFoodListFragment
-import ir.atriatech.lootinomenu.management.management_panel.ManagementPanelAdapter
 import ir.atriatech.lootinomenu.model.SubMenu
+import ir.atriatech.lootinomenu.util.DrawableUtils
 import kotlinx.android.synthetic.main.item_sub_menu_recycler_view.view.*
 import javax.inject.Inject
 
@@ -33,8 +33,7 @@ class SubMenuAdapter : RecyclerView.Adapter<SubMenuAdapter.SubMenuViewHolder>()
 		return null
 	}
 
-	lateinit var listOfOrder: MutableList<Long>
-	protected val component by lazy { AppDH.baseComponent() }
+	private val component by lazy { AppDH.baseComponent() }
 
 
 	init {
@@ -50,7 +49,7 @@ class SubMenuAdapter : RecyclerView.Adapter<SubMenuAdapter.SubMenuViewHolder>()
 		x: Int,
 		y: Int
 	): Boolean {
-		val itemView = holder.itemView
+//		val itemView = holder.itemView
 		val dragHandle = holder.draghandeler
 		val handleWidth = dragHandle.width
 		val handleHeight = dragHandle.height
@@ -116,14 +115,33 @@ class SubMenuAdapter : RecyclerView.Adapter<SubMenuAdapter.SubMenuViewHolder>()
 
 	override fun onBindViewHolder(holder: SubMenuViewHolder, position: Int) {
 		holder.bindUI(subMenuList[position])
+		holder.itemView.item_sub_menu_manager_activity_container
+		val dragState = holder.getDragState()
+
+		if (dragState.isUpdated) {
+			val bgResId: Int
+
+			when {
+				dragState.isActive -> {
+					bgResId = R.drawable.bg_item_dragging_active_state
+
+					// need to clear drawable state here to get correct appearance of the dragging item.
+					DrawableUtils.clearState(holder.itemView.item_sub_menu_manager_activity_container.foreground)
+				}
+				dragState.isDragging -> bgResId = R.drawable.bg_item_dragging_state
+				else -> bgResId = R.drawable.bg_item_normal_state
+			}
+
+			holder.itemView.item_sub_menu_manager_activity_container.setBackgroundResource(bgResId)
+		}
 	}
 
 	class SubMenuViewHolder(itemView: View, val context: Context) :
 		AbstractDraggableItemViewHolder(itemView) {
 		var draghandeler: ImageView = itemView.img_move_item_sub_menu
 		fun bindUI(subMenu: SubMenu) {
-			val callback: ManagementPanelAdapter.CallBack = context as ManagementActivity
-			val managementActivityCallBack: ManagementActivityCallBack = context
+			val managementActivityCallBack: ManagementActivityCallBack =
+				context as ManagementActivity
 			val deleteSubMenuWarning: ManagementCallBackForDeleteSubMenuWarning = context
 			itemView.txt_item_sub_menu.text = subMenu.name
 			itemView.img_edit_item_sub_menu.setOnClickListener {

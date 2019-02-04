@@ -111,25 +111,23 @@
 			app:layout_constraintTop_toBottomOf="@id/txt_name" />
 
 
-
-			<com.facebook.drawee.view.SimpleDraweeView
-				android:id="@+id/img_view_activity_food_detail"
-				android:layout_width="match_parent"
-				android:layout_height="300dp"
-				android:layout_margin="16dp"
-				app:elevation="4dp"
-				app:layout_constraintBottom_toBottomOf="parent"
-
-				app:layout_constraintBottom_toTopOf="@id/btn_back_to_main_menu"
-				app:layout_constraintLeft_toLeftOf="parent"
-				app:layout_constraintRight_toRightOf="parent"
-				app:layout_constraintTop_toBottomOf="@id/txt_detail"
-				app:shape_roundRect_borderColor="@color/main_menu_sub_menu_item_color"
-				app:roundedCornerRadius="5dp"
-				app:actualImageScaleType="centerCrop"
-				android:contentDescription="@string/todo"
-				android:src="@drawable/default_image" />
-
+		<com.facebook.drawee.view.SimpleDraweeView
+			android:id="@+id/img_view_activity_food_detail"
+			android:layout_width="match_parent"
+			android:layout_height="300dp"
+			android:layout_margin="16dp"
+			android:contentDescription="@string/todo"
+			android:src="@drawable/default_image"
+			app:actualImageScaleType="centerCrop"
+			app:elevation="4dp"
+			app:layout_constraintBottom_toBottomOf="parent"
+			app:layout_constraintBottom_toTopOf="@id/btn_back_to_main_menu"
+			app:layout_constraintLeft_toLeftOf="parent"
+			app:layout_constraintRight_toRightOf="parent"
+			app:layout_constraintTop_toBottomOf="@id/txt_detail"
+			app:roundedCornerRadius="5dp"
+			app:shape_roundRect_borderColor="@color/main_menu_sub_menu_item_color"
+			 />
 
 
 	</androidx.constraintlayout.widget.ConstraintLayout>

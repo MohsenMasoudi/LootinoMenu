@@ -3,21 +3,13 @@ package ir.atriatech.lootinomenu.management.management_food_list
 
 import android.annotation.SuppressLint
 import android.content.Context
-import android.graphics.Bitmap
-import android.net.Uri
 import android.os.Bundle
-import android.provider.MediaStore.Images
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.himanshurawat.imageworker.Extension
-import com.himanshurawat.imageworker.ImageWorker
 import ir.atriatech.lootinomenu.ARG_MANAGEMENT_FOOD_LIST_FRAGMENT
-import ir.atriatech.lootinomenu.IMAGE_DIRECTORY
-import ir.atriatech.lootinomenu.IMAGE_SUB_DIRECTORY
 import ir.atriatech.lootinomenu.R
 import ir.atriatech.lootinomenu.management.ManagementActivity
 import ir.atriatech.lootinomenu.management.ManagementActivityCallBack
@@ -27,8 +19,6 @@ import ir.atriatech.lootinomenu.management.sub_menu.SubMenuFragment
 import ir.atriatech.lootinomenu.model.Food
 import ir.atriatech.lootinomenu.model.SubMenu
 import kotlinx.android.synthetic.main.fragment_management_food_list.*
-import kotlinx.android.synthetic.main.fragment_management_panel.*
-import java.io.ByteArrayOutputStream
 
 
 class ManagementFoodListFragment : Fragment() {

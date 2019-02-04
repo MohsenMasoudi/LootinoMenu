@@ -12,7 +12,7 @@ import kotlinx.android.synthetic.main.main_menu_food_item.view.*
 import java.text.NumberFormat
 import java.util.*
 
-class FoodViewHolder(itemView: View, val picasso: Picasso) : RecyclerView.ViewHolder(itemView) {
+class FoodViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 	fun bindFoodUI(food: Food) {
 		itemView.txt_item_name_main_recycler_view.text = food.productName
 		val format = NumberFormat.getNumberInstance(Locale.US).format(food.price)

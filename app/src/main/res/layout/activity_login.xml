@@ -89,6 +89,9 @@
 			android:hint="@string/login_name"
 			android:textColor="@color/white"
 			android:textSize="16sp"
+			android:maxLines="1"
+
+			android:singleLine="true"
 			android:theme="@style/editTextLogin"
 			app:layout_constraintBottom_toTopOf="@+id/edit_text_pass"
 			app:layout_constraintEnd_toEndOf="parent"
@@ -103,6 +106,8 @@
 			android:layout_marginStart="50dp"
 			android:layout_marginTop="8dp"
 			android:layout_marginEnd="50dp"
+			android:singleLine="true"
+android:maxLines="1"
 			android:layout_marginBottom="8dp"
 			android:drawableRight="@drawable/ic_vpn_key_white_24dp"
 			android:drawablePadding="10dp"

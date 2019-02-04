@@ -23,8 +23,8 @@ import ir.atriatech.lootinomenu.management.management_panel.ManagementPanelFragm
 
 
 class SubMenuFragment : Fragment() {
-	lateinit var mAdapter: SubMenuAdapter
-	lateinit var subMenulist: MutableList<SubMenu>
+	private lateinit var mAdapter: SubMenuAdapter
+	private lateinit var subMenuList: MutableList<SubMenu>
 	private var menuId: Int? = null
 	companion object {
 		fun newInstance(menuId: Int): SubMenuFragment {
@@ -69,7 +69,7 @@ class SubMenuFragment : Fragment() {
 	override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 		super.onViewCreated(view, savedInstanceState)
 		mAdapter= SubMenuAdapter()
-		mAdapter.subMenuList=subMenulist
+		mAdapter.subMenuList=subMenuList
 		val dragDropManager = RecyclerViewDragDropManager()
 		val wrappedAdapter = dragDropManager.createWrappedAdapter(mAdapter)
 		recycler_view_sub_menu_fragment.adapter=wrappedAdapter
@@ -88,12 +88,12 @@ class SubMenuFragment : Fragment() {
 
 	}
 
-	fun getListOfFood(listId: Int) {
+	private fun getListOfFood(listId: Int) {
 		Log.d("tag22", listId.toString())
 
-		subMenulist =
+		subMenuList =
 			(activity as ManagementActivity).appDataBase.subMenuDao().getAllWithMenuId(listId)
-		Log.d("tag22", subMenulist.size.toString())
+		Log.d("tag22", subMenuList.size.toString())
 	}
 
 }

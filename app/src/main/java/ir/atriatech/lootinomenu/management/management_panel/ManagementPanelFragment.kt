@@ -54,7 +54,7 @@ class ManagementPanelFragment : Fragment() {
 		img_btn_sync.visibility=View.INVISIBLE
 	}
 
-	fun getImageUri(inContext: Context, inImage: Bitmap): Uri {
+	private fun getImageUri(inContext: Context, inImage: Bitmap): Uri {
 		val bytes = ByteArrayOutputStream()
 		inImage.compress(Bitmap.CompressFormat.JPEG, 100, bytes)
 		val path =
@@ -62,15 +62,13 @@ class ManagementPanelFragment : Fragment() {
 		return Uri.parse(path)
 	}
 
-	fun getBitmap(context: Context, name: String): Bitmap? {
-		val bitmap: Bitmap? =
-			ImageWorker.from(context).directory(IMAGE_DIRECTORY).subDirectory(IMAGE_SUB_DIRECTORY)
-				.setFileName(name).withExtension(Extension.JPEG).load()
-		return bitmap
+	private fun getBitmap(context: Context, name: String): Bitmap? {
+		return ImageWorker.from(context).directory(IMAGE_DIRECTORY).subDirectory(IMAGE_SUB_DIRECTORY)
+			.setFileName(name).withExtension(Extension.JPEG).load()
 	}
 
-	fun loadImages() {
-		var listOfFoods = (activity as ManagementActivity).appDataBase.foodDao().getAll()
+	private fun loadImages() {
+		val listOfFoods = (activity as ManagementActivity).appDataBase.foodDao().getAll()
 		for (i in listOfFoods.indices) {
 			var bitMap: Bitmap? = null
 

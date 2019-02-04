@@ -22,7 +22,7 @@ import ir.atriatech.lootinomenu.model.SubMenu
 import javax.inject.Inject
 
 
-class ManagementActivity : BaseActivity(), ManagementPanelAdapter.CallBack,
+open class ManagementActivity : BaseActivity(), ManagementPanelAdapter.CallBack,
 	ManagementActivityCallBack, ManagementCallBackForDeleteSubMenuWarning,
 	ManagementCallBackForDeleteFoodWarning, callBackChoosSubMenu {
 	lateinit var dialogBuilder: NiftyDialogBuilder
@@ -46,60 +46,11 @@ class ManagementActivity : BaseActivity(), ManagementPanelAdapter.CallBack,
 	}
 
 
-	fun deleteWarning(subMenu: SubMenu) {
-		SweetAlertDialog(this, SweetAlertDialog.WARNING_TYPE)
-			.setTitleText("می خواهید این بخش را حذف کنید؟")
-			.setCancelText("خیر")
-			.setConfirmText("بله")
-			.showCancelButton(true)
-			.setConfirmClickListener { sDialod ->
 
-				sDialod.changeAlertType(SweetAlertDialog.SUCCESS_TYPE)
-				val listOfFood: MutableList<Food> =
-					appDataBase.foodDao()
-						.findBySubId(subMenu.subMenuId)
-				for (i in listOfFood.indices) {
-					listOfFood[i].subMenuId = 0
-//					sDialod.dismissWithAnimation()
-					sDialod.dismissWithAnimation()
-
-				}
-				appDataBase.foodDao()
-					.updateAll(foodList = listOfFood)
-
-				appDataBase.subMenuDao().delete(subMenu)
-				getFragmentToLoad(subMenu.menuId - 1)
-
-			}
-			.setCancelClickListener { sDialog -> sDialog.cancel() }
-			.show()
-	}
-
-	fun deleteWarning(food: Food) {
-		SweetAlertDialog(this, SweetAlertDialog.WARNING_TYPE)
-			.setTitleText("می خواهید این غذا را حذف کنید؟")
-			.setCancelText("خیر")
-			.setConfirmText("بله")
-			.showCancelButton(true)
-			.setConfirmClickListener { sDialod ->
-				sDialod.changeAlertType(SweetAlertDialog.SUCCESS_TYPE)
-
-				appDataBase.foodDao()
-					.delete(food)
-				ManagmentFragmentLoader(ManagementFoodListFragment.newInstance(food.subMenuId))
-//				getFragmentToLoad(subMenu.menuId - 1)
-				sDialod.dismissWithAnimation()
-
-			}
-			.setCancelClickListener { sDialog -> sDialog.cancel() }
-			.show()
-	}
 
 	protected val component by lazy { AppDH.baseComponent() }
 
-	init {
-		component.inject(this)
-	}
+
 
 	@Inject
 	lateinit var appDataBase: AppDataBase
@@ -134,6 +85,8 @@ class ManagementActivity : BaseActivity(), ManagementPanelAdapter.CallBack,
 
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
+		component.inject(this)
+
 		setContentView(R.layout.activity_management)
 		val managementPanelFragment =
 			ManagementPanelFragment()

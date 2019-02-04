@@ -25,7 +25,8 @@
 		<activity
 			android:name=".management.ManagementActivity"
 			android:screenOrientation="portrait"
-			android:theme="@style/AppThemeNoActionBar" />
+			android:theme="@style/AppThemeNoActionBar"
+			android:windowSoftInputMode="adjustResize"/>
 		<activity
 			android:name=".login.LoginActivity"
 			android:screenOrientation="portrait"

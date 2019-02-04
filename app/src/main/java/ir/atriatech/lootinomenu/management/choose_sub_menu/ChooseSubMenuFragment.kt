@@ -17,10 +17,14 @@ import ir.atriatech.lootinomenu.model.SubMenu
 import kotlinx.android.synthetic.main.fragment_choose_sub_menu.*
 
 class ChooseSubMenuFragment : Fragment(), callBackChooseSubMenuFragment {
+
 	override fun setSubMenu(subMenuId: Int, menuId: Int) {
 		val callBack: ManagementActivityCallBack = activity as ManagementActivityCallBack
 		if (foodId != 0) {
 			val food = (activity as ManagementActivity).appDataBase.foodDao().findById(foodId)
+			if (food.subMenuId!=subMenuId){
+				isSubMenuChanged=true
+			}
 			food.subMenuId = subMenuId
 			food.menuId = menuId
 			(activity as ManagementActivity).appDataBase.foodDao().update(food)
@@ -45,6 +49,8 @@ class ChooseSubMenuFragment : Fragment(), callBackChooseSubMenuFragment {
 	lateinit var list: MutableList<SubMenu>
 
 	companion object {
+		var isSubMenuChanged:Boolean=false
+
 		fun newInstance(foodId: Int): ChooseSubMenuFragment {
 			val chooseSubMenuFragment = ChooseSubMenuFragment()
 			val arg = Bundle()
@@ -78,6 +84,7 @@ class ChooseSubMenuFragment : Fragment(), callBackChooseSubMenuFragment {
 
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
+		isSubMenuChanged=false
 		val arg = arguments
 		try {
 			foodId = arg?.getInt(ARG_CHOOSE_SUB_MENU_FRAGMENT, 0)!!

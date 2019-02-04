@@ -35,22 +35,25 @@ class ChooseSubMenuAdapter(val list: MutableList<SubMenu>, val fragment: ChooseS
 		var menu_name: String = ""
 		val callBack: callBackChooseSubMenuFragment = fragment
 		fun bindUI(subMenu: SubMenu) {
-			if (subMenu.menuId == 0) {
-				menu_name = "دسته بندی نشده"
-				itemView.txt_name.text = subMenu.name
-//				itemView.txt_name.setTextColor(Color.RED)
+			when {
+				subMenu.menuId == 0 -> {
+					menu_name = "دسته بندی نشده"
+					itemView.txt_name.text = subMenu.name
+		//				itemView.txt_name.setTextColor(Color.RED)
 
-			} else if (subMenu.menuId == 1) {
-				itemView.txt_name.text = subMenu.name + " در منوی " + menu_name
+				}
+				subMenu.menuId == 1 -> {
+					menu_name = "کافی شاپ"
+					itemView.txt_name.text = subMenu.name + " در منوی " + menu_name
+				}
+				subMenu.menuId == 2 -> {
+					menu_name = "رستوران"
+					itemView.txt_name.text = subMenu.name + " در منوی " + menu_name
 
-				menu_name = "کافی شاپ"
-			} else if (subMenu.menuId == 2) {
-				menu_name = "رستوران"
-				itemView.txt_name.text = subMenu.name + " در منوی " + menu_name
-
+				}
 			}
 			itemView.setOnClickListener {
-				callBack.setSubMenu(subMenuId = subMenu.subMenuId, menuId = subMenu.subMenuId)
+				callBack.setSubMenu(subMenuId = subMenu.subMenuId, menuId = subMenu.menuId)
 			}
 
 		}
