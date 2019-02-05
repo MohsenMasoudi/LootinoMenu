@@ -14,7 +14,7 @@
 		<androidx.appcompat.widget.Toolbar
 			android:id="@+id/my_toolbar"
 			android:layout_width="match_parent"
-			android:layout_height="56dp"
+			android:layout_height="65dp"
 			android:background="@color/colorPrimary"
 			android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
 			app:contentInsetEnd="0dp"
@@ -28,7 +28,7 @@
 
 			<androidx.constraintlayout.widget.ConstraintLayout
 				android:layout_width="match_parent"
-				android:layout_height="match_parent"
+				android:layout_height="wrap_content"
 				android:padding="16dp">
 
 				<ImageButton
@@ -48,7 +48,7 @@
 					android:id="@+id/txt_add_or_edit_title"
 					style="@style/IranSansBold"
 					android:layout_width="wrap_content"
-					android:layout_height="match_parent"
+					android:layout_height="wrap_content"
 					android:drawablePadding="10dp"
 					android:gravity="center"
 					android:text=""
@@ -64,7 +64,8 @@
 
 			android:id="@+id/edit_text_add_or_edit_sub_menu"
 			android:layout_width="fill_parent"
-			android:layout_height="50dp"
+			android:layout_height="wrap_content"
+			android:padding="5dp"
 			android:maxLength="30"
 			android:maxLines="1"
 			android:singleLine="true"

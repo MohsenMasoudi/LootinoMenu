@@ -17,8 +17,7 @@ class MainItem : AbstractFlexibleItem<MainItemHolder>() {
 		position: Int,
 		payloads: MutableList<Any>?
 	) {
-		holder?.bindFoodUI((payloads!![position] as MainItem))
-//		holder?.itemView?.isEnabled=true
+		holder?.bindFoodUI(this)
 	}
 
 	override fun equals(other: Any?): Boolean {

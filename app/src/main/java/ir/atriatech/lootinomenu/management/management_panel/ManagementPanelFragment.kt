@@ -52,6 +52,10 @@ class ManagementPanelFragment : Fragment() {
 			loadImages()
 		}
 		img_btn_sync.visibility=View.INVISIBLE
+		img_btn_shot_down.setOnClickListener {
+			(activity as ManagementActivity).onFinishClick()
+
+		}
 	}
 
 	private fun getImageUri(inContext: Context, inImage: Bitmap): Uri {

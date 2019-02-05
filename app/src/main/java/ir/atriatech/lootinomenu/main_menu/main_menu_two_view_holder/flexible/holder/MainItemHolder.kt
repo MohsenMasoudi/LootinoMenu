@@ -16,6 +16,7 @@ import java.util.*
 
 class MainItemHolder(itemView: View,adapter: FlexibleAdapter<IFlexible<RecyclerView.ViewHolder>>
                       ):FlexibleViewHolder(itemView, adapter,false) {
+
 	fun bindFoodUI(mainItem: MainItem) {
 		itemView.txt_item_name_main_recycler_view.text = mainItem.productName
 		val format = NumberFormat.getNumberInstance(Locale.US).format(mainItem.price)

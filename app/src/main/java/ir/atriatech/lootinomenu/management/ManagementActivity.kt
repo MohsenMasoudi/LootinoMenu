@@ -6,12 +6,13 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
-import cn.pedant.SweetAlert.SweetAlertDialog
 import com.example.beautyshopapplication.base.BaseActivity
 import com.gitonway.lee.niftymodaldialogeffects.lib.Effectstype
 import com.gitonway.lee.niftymodaldialogeffects.lib.NiftyDialogBuilder
 import ir.atriatech.lootinomenu.R
+import ir.atriatech.lootinomenu.SHOULD_FINISH
 import ir.atriatech.lootinomenu.data_base.room.AppDataBase
+import ir.atriatech.lootinomenu.main.MainActivity
 import ir.atriatech.lootinomenu.management.add_or_edit_food.AddOrEditFoodFragment
 import ir.atriatech.lootinomenu.management.management_food_list.ManagementFoodListFragment
 import ir.atriatech.lootinomenu.management.management_panel.ManagementPanelAdapter
@@ -19,12 +20,25 @@ import ir.atriatech.lootinomenu.management.management_panel.ManagementPanelFragm
 import ir.atriatech.lootinomenu.management.sub_menu.SubMenuFragment
 import ir.atriatech.lootinomenu.model.Food
 import ir.atriatech.lootinomenu.model.SubMenu
+import kotlinx.android.synthetic.main.fragment_management_panel.*
 import javax.inject.Inject
 
 
 open class ManagementActivity : BaseActivity(), ManagementPanelAdapter.CallBack,
 	ManagementActivityCallBack, ManagementCallBackForDeleteSubMenuWarning,
 	ManagementCallBackForDeleteFoodWarning, callBackChoosSubMenu {
+	//	protected fun onFinishClick() {
+//		Intent intent = new Intent(this, ActivityA.class);
+//		intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//		intent.putExtra(ActivityA.SHOULD_FINISH, true);
+//		startActivity(intent);
+//	}
+	fun onFinishClick(){
+		val intent=Intent(this,MainActivity::class.java)
+		intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+		intent.putExtra(SHOULD_FINISH,true)
+		startActivity(intent)
+	}
 	lateinit var dialogBuilder: NiftyDialogBuilder
 	override fun loadLastFragment() {
 		val beforeLast = fragmentList.size - 2
@@ -46,10 +60,7 @@ open class ManagementActivity : BaseActivity(), ManagementPanelAdapter.CallBack,
 	}
 
 
-
-
 	protected val component by lazy { AppDH.baseComponent() }
-
 
 
 	@Inject
@@ -87,13 +98,16 @@ open class ManagementActivity : BaseActivity(), ManagementPanelAdapter.CallBack,
 		super.onCreate(savedInstanceState)
 		component.inject(this)
 
-		setContentView(R.layout.activity_management)
+		setContentView(ir.atriatech.lootinomenu.R.layout.activity_management)
 		val managementPanelFragment =
 			ManagementPanelFragment()
 		Log.d("tag22", appDataBase.foodDao().countFoods().toString())
 		loadFragment(managementPanelFragment)
 
+
 	}
+
+
 
 	private fun loadFragment(fragment: Fragment) {
 		fragmentList.add(fragment)
@@ -122,7 +136,7 @@ open class ManagementActivity : BaseActivity(), ManagementPanelAdapter.CallBack,
 			.withTitle("اخطار")
 			.withTitleColor("#FFFFFF")
 			.withDividerColor("#515151")
-			.withMessage("می خواهید "+food.productName+" را حذف کنید؟")
+			.withMessage("می خواهید " + food.productName + " را حذف کنید؟")
 			.withMessageColor("#FFFFFFFF")
 			.withDialogColor("#3c3c3c")
 			.withIcon(R.drawable.ic_error)
@@ -144,13 +158,15 @@ open class ManagementActivity : BaseActivity(), ManagementPanelAdapter.CallBack,
 				dialogBuilder.dismiss()
 			}
 			.show()
-	}fun deleteDialog(subMenu: SubMenu) {
+	}
+
+	fun deleteDialog(subMenu: SubMenu) {
 		dialogBuilder = NiftyDialogBuilder.getInstance(this)
 		dialogBuilder
 			.withTitle("اخطار")
 			.withTitleColor("#FFFFFF")
 			.withDividerColor("#515151")
-			.withMessage(" می خواهید بخش "+ subMenu.name +" را حذف کنید؟")
+			.withMessage(" می خواهید بخش " + subMenu.name + " را حذف کنید؟")
 			.withMessageColor("#FFFFFFFF")
 			.withDialogColor("#3c3c3c")
 			.withIcon(R.drawable.ic_error)
@@ -181,9 +197,10 @@ open class ManagementActivity : BaseActivity(), ManagementPanelAdapter.CallBack,
 				dialogBuilder.dismiss()
 			}
 			.show()
-	}
+	}}
 
-}
+
+
 
 interface ManagementActivityCallBack {
 	fun ManagmentFragmentLoader(fragment: Fragment)

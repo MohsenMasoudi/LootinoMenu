@@ -5,19 +5,27 @@ import androidx.recyclerview.widget.RecyclerView
 import eu.davidea.flexibleadapter.FlexibleAdapter
 import eu.davidea.flexibleadapter.items.AbstractHeaderItem
 import eu.davidea.flexibleadapter.items.IFlexible
+import eu.davidea.flexibleadapter.items.IHeader
 import eu.davidea.viewholders.FlexibleViewHolder
 import ir.atriatech.lootinomenu.R
 import kotlinx.android.synthetic.main.main_menu_header_item.view.*
 
-class HeaderItem : AbstractHeaderItem<HeaderItem.HeaderItemHolder>() {
+class HeaderItem : AbstractHeaderItem<HeaderItem.HeaderItemHolder>(),IHeader<HeaderItem.HeaderItemHolder>
+{
+	init {
+//		setExpanded(true)
+
+	}
 	override fun bindViewHolder(
 		adapter: FlexibleAdapter<IFlexible<RecyclerView.ViewHolder>>?,
 		holder: HeaderItemHolder?,
 		position: Int,
 		payloads: MutableList<Any>?
 	) {
-
-		holder?.bindHeaderUI(((payloads!![position] )as HeaderItem))
+		holder?.contentView?.isClickable=true
+//		holder?.setFullSpan(true)
+//holder.?
+		holder?.bindHeaderUI(this)
 	}
 
 	override fun hashCode(): Int {

@@ -30,3 +30,4 @@ const val IMAGE_ASSETS_ADDRESS_BIG = "asset:///images/big/"
 const val IMAGE_ASSETS_ADDRESS_SMALL = "asset:///images/small/"
 const val TYPE_FOOD = 1
 const val TYPE_SUB_MENU = 2
+const val SHOULD_FINISH="FINISH"
